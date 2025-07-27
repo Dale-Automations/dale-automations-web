@@ -1,5 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Phone, Instagram, MessageCircle, Calendar, TrendingUp, Users } from "lucide-react";
+import ascendAiImage from "@/assets/ascend-ai-hero.jpg";
+import socialMediaImage from "@/assets/social-media-automation.jpg";
 
 const Solutions = () => {
   return (
@@ -16,13 +18,21 @@ const Solutions = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {/* Ascend AI */}
-          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10">
-            <CardHeader className="text-center pb-4">
-              <div className="flex items-center justify-center mb-4">
-                <div className="p-4 bg-gradient-primary rounded-full shadow-glow">
-                  <Phone className="h-8 w-8 text-primary-foreground" />
+          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10 overflow-hidden">
+            <div className="relative h-48 overflow-hidden">
+              <img 
+                src={ascendAiImage} 
+                alt="Ascend AI - Sistema de llamadas inteligente" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent"></div>
+              <div className="absolute bottom-4 left-4">
+                <div className="p-3 bg-white/10 backdrop-blur-sm rounded-full">
+                  <Phone className="h-6 w-6 text-white" />
                 </div>
               </div>
+            </div>
+            <CardHeader className="text-center pb-4">
               <CardTitle className="text-2xl font-bold text-brand-navy mb-2">
                 Ascend AI
               </CardTitle>
@@ -57,13 +67,21 @@ const Solutions = () => {
           </Card>
 
           {/* Social Media Automation */}
-          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10">
-            <CardHeader className="text-center pb-4">
-              <div className="flex items-center justify-center mb-4">
-                <div className="p-4 bg-gradient-primary rounded-full shadow-glow">
-                  <Instagram className="h-8 w-8 text-primary-foreground" />
+          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10 overflow-hidden">
+            <div className="relative h-48 overflow-hidden">
+              <img 
+                src={socialMediaImage} 
+                alt="Automatización de Redes Sociales con IA" 
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/80 to-transparent"></div>
+              <div className="absolute bottom-4 left-4">
+                <div className="p-3 bg-white/10 backdrop-blur-sm rounded-full">
+                  <Instagram className="h-6 w-6 text-white" />
                 </div>
               </div>
+            </div>
+            <CardHeader className="text-center pb-4">
               <CardTitle className="text-2xl font-bold text-brand-navy mb-2">
                 Redes Sociales IA
               </CardTitle>

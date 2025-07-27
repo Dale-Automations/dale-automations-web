@@ -106,7 +106,7 @@ const ContactForm = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="phone" className="text-brand-navy font-medium">
-                    Teléfono <span className="text-muted-foreground">(opcional, para probar Ascend AI)</span>
+                    Teléfono <span className="text-muted-foreground">(opcional, solo WhatsApp para probar Ascend)</span>
                   </Label>
                   <div className="relative">
                     <Input
@@ -115,7 +115,7 @@ const ContactForm = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="+54 9 11 xxxx-xxxx"
+                      placeholder="+541136626658"
                       className="pl-10 border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                     />
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-blue" />
