@@ -7,13 +7,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Logo and description */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <img 
-                src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
-                alt="Dale Automations Logo" 
-                className="h-10 w-auto filter brightness-0 invert"
-              />
-            </div>
+            <h4 className="text-lg font-semibold text-primary-foreground">Dale Automations</h4>
             <p className="text-primary-foreground/80 leading-relaxed">
               Transformamos negocios con soluciones de inteligencia artificial que trabajan 24/7. 
               Más eficiencia, menos costos, mejores resultados.
