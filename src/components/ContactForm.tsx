@@ -115,7 +115,7 @@ const ContactForm = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder=""
+                      placeholder="Tu teléfono"
                       className="pl-10 border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                     />
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-blue" />
