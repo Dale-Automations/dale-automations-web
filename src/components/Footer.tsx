@@ -1,3 +1,4 @@
+
 import { Bot, Mail, Phone, MapPin } from "lucide-react";
 
 const Footer = () => {
@@ -60,6 +61,10 @@ const Footer = () => {
               <div className="flex items-center space-x-3">
                 <MapPin className="h-5 w-5 text-brand-blue" />
                 <span className="text-primary-foreground/80">Buenos Aires, Argentina</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <MapPin className="h-5 w-5 text-brand-blue" />
+                <span className="text-primary-foreground/80">Houston, TX</span>
               </div>
             </div>
           </div>
