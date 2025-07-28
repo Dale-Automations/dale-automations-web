@@ -11,7 +11,7 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
                 alt="Dale Automations Logo" 
-                className="h-10 w-auto brightness-0 invert"
+                className="h-10 w-auto filter brightness-0 invert"
               />
             </div>
             <p className="text-primary-foreground/80 leading-relaxed">
