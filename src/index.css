@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -120,7 +121,7 @@ All colors MUST be HSL.
   }
 }
 
-/* Sheen border animation for CTA */
+/* Sheen border animation for CTA - previous attempt (kept for reference, not used) */
 @keyframes sheen-rotate {
   to { transform: rotate(360deg); }
 }
@@ -152,5 +153,42 @@ All colors MUST be HSL.
     position: relative;
     z-index: 1;
     border-radius: inherit;
+  }
+}
+
+/* Punto de luz recorriendo el borde del botón */
+@keyframes dash-move {
+  to { stroke-dashoffset: -400; }
+}
+
+@layer utilities {
+  .btn-orbit {
+    position: relative;
+    display: inline-block;
+    border-radius: var(--radius);
+    overflow: visible; /* permite que el punto brille fuera del borde */
+  }
+
+  /* SVG overlay que dibuja el trazo animado */
+  .btn-orbit-svg {
+    position: absolute;
+    inset: -3px; /* ligero margen para que el brillo vaya por fuera */
+    width: calc(100% + 6px);
+    height: calc(100% + 6px);
+    pointer-events: none;
+    z-index: 10; /* por encima del botón, sin bloquear clics */
+  }
+
+  /* Trazo con un dash diminuto (punto) que recorre todo el contorno */
+  .btn-orbit-stroke {
+    fill: none;
+    stroke: hsl(var(--primary-foreground));
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-dasharray: 2 400; /* 1 pequeño "punto" y un gran hueco */
+    animation: dash-move 2.2s linear infinite;
+    filter: drop-shadow(0 0 6px hsl(var(--primary-foreground) / 0.8))
+            drop-shadow(0 0 14px hsl(var(--brand-blue) / 0.5));
+    opacity: 0.95;
   }
 }

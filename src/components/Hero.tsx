@@ -1,3 +1,4 @@
+
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Bot } from "lucide-react";
 
@@ -34,7 +35,7 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="btn-sheen">
+            <div className="btn-orbit">
               <Button 
                 size="lg" 
                 asChild
@@ -45,7 +46,26 @@ const Hero = () => {
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </a>
               </Button>
+
+              {/* Punto de luz animado recorriendo el borde */}
+              <svg
+                className="btn-orbit-svg"
+                viewBox="0 0 100 40"
+                preserveAspectRatio="none"
+                aria-hidden="true"
+              >
+                <rect
+                  x="2"
+                  y="2"
+                  width="96"
+                  height="36"
+                  rx="8"
+                  ry="8"
+                  className="btn-orbit-stroke"
+                />
+              </svg>
             </div>
+
             <Button 
               size="lg" 
               variant="outline"
