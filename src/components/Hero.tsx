@@ -34,16 +34,19 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button 
-              size="lg" 
-              asChild
-              className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
-            >
-              <a href="https://creator.voiceflow.com/prototype/687c300e0dde4cc3e9cbab8c" target="_blank" rel="noopener noreferrer">
-                Hablar con un Agente
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </a>
-            </Button>
+            <div className="relative">
+              <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-xl opacity-75 animate-pulse"></div>
+              <Button 
+                size="lg" 
+                asChild
+                className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group animate-bounce shadow-2xl"
+              >
+                <a href="https://creator.voiceflow.com/prototype/687c300e0dde4cc3e9cbab8c" target="_blank" rel="noopener noreferrer">
+                  Hablar con un Agente
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </a>
+              </Button>
+            </div>
             <Button 
               size="lg" 
               variant="outline"
