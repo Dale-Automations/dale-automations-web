@@ -13,7 +13,7 @@ const Header = () => {
           <img 
             src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
             alt="Dale Automations Logo" 
-            className="h-10 w-auto"
+            className="h-12 w-auto"
           />
         </div>
         
