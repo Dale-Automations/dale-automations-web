@@ -16,7 +16,7 @@ const ContactForm = () => {
     message: ''
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.email) {
@@ -28,40 +28,41 @@ const ContactForm = () => {
       return;
     }
 
-    try {
-      // Send email notification
-      const response = await fetch("https://vcwgogpzihsailxfoanq.supabase.co/functions/v1/send-contact-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error("Error al enviar el email");
-      }
-
-      toast({
-        title: "¡Mensaje enviado!",
-        description: "Nos pondremos en contacto contigo pronto.",
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        phone: '',
-        email: '',
-        message: ''
-      });
-    } catch (error) {
-      console.error("Error sending contact form:", error);
-      toast({
-        title: "Error",
-        description: "Hubo un problema al enviar tu mensaje. Por favor intenta nuevamente.",
-        variant: "destructive"
-      });
+    // Construir el mensaje de WhatsApp
+    let whatsappMessage = `Hola! Me interesa automatizar mi negocio con IA.\n\n`;
+    whatsappMessage += `📝 *Datos de contacto:*\n`;
+    whatsappMessage += `• Nombre: ${formData.name}\n`;
+    whatsappMessage += `• Email: ${formData.email}\n`;
+    
+    if (formData.phone) {
+      whatsappMessage += `• Teléfono: ${formData.phone}\n`;
     }
+    
+    if (formData.message) {
+      whatsappMessage += `\n💬 *Mensaje:*\n${formData.message}`;
+    }
+
+    // Codificar el mensaje para URL
+    const encodedMessage = encodeURIComponent(whatsappMessage);
+    
+    // Crear la URL de WhatsApp
+    const whatsappURL = `https://wa.me/541136626658?text=${encodedMessage}`;
+    
+    // Abrir WhatsApp en una nueva pestaña
+    window.open(whatsappURL, '_blank');
+
+    toast({
+      title: "¡Redirigiendo a WhatsApp!",
+      description: "Se abrirá WhatsApp con tu mensaje listo para enviar.",
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      phone: '',
+      email: '',
+      message: ''
+    });
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
