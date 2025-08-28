@@ -36,11 +36,13 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Button 
               size="lg" 
-              onClick={scrollToContact}
+              asChild
               className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
             >
-              Comenzar Ahora
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <a href="https://creator.voiceflow.com/prototype/687c300e0dde4cc3e9cbab8c" target="_blank" rel="noopener noreferrer">
+                Hablar con un Agente
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </a>
             </Button>
             <Button 
               size="lg" 
