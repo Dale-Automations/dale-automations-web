@@ -35,11 +35,11 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-primary rounded-lg blur-xl opacity-75 animate-pulse"></div>
+              <div className="absolute -inset-1 bg-gradient-to-r from-brand-blue via-brand-navy to-brand-blue rounded-lg blur-sm opacity-75 animate-spin"></div>
               <Button 
                 size="lg" 
                 asChild
-                className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group animate-bounce shadow-2xl"
+                className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
               >
                 <a href="https://creator.voiceflow.com/prototype/687c300e0dde4cc3e9cbab8c" target="_blank" rel="noopener noreferrer">
                   Hablar con un Agente
