@@ -34,17 +34,11 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="relative">
+            <div className="btn-sheen">
               <Button 
                 size="lg" 
                 asChild
-                className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group border-2 border-transparent bg-clip-padding"
-                style={{
-                  backgroundImage: 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-variant))), linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(99, 102, 241, 0.5), rgba(139, 92, 246, 0.5))',
-                  backgroundClip: 'padding-box, border-box',
-                  backgroundOrigin: 'padding-box, border-box',
-                  animation: 'pulse 2s infinite'
-                }}
+                className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
               >
                 <a href="https://creator.voiceflow.com/prototype/687c300e0dde4cc3e9cbab8c" target="_blank" rel="noopener noreferrer">
                   Hablar con un Agente
