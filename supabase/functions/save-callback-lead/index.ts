@@ -64,6 +64,28 @@ const handler = async (req: Request): Promise<Response> => {
 
     console.log("Lead saved successfully:", data);
 
+    // Send data to n8n webhook
+    try {
+      const webhookResponse = await fetch("https://n8n.daleautomations.com/webhook/Ascend", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: data.id,
+          name: data.name,
+          phone: data.phone,
+          status: data.status,
+          created_at: data.created_at
+        }),
+      });
+      
+      console.log("Webhook called:", webhookResponse.status);
+    } catch (webhookError) {
+      console.error("Failed to call webhook:", webhookError);
+      // Don't fail the entire request if webhook fails
+    }
+
     return new Response(
       JSON.stringify({ 
         success: true, 
