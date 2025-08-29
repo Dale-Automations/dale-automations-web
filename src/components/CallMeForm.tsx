@@ -83,7 +83,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                 <Label htmlFor="name">Nombre</Label>
                 <Input
                   id="name"
-                  placeholder="Tu nombre completo"
+                  placeholder="Nombre"
                   {...register("name")}
                   className={errors.name ? "border-destructive" : ""}
                 />
@@ -96,7 +96,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                 <Label htmlFor="phone">Teléfono</Label>
                 <Input
                   id="phone"
-                  placeholder="Tu número de teléfono"
+                  placeholder="+541123456789"
                   {...register("phone")}
                   className={errors.phone ? "border-destructive" : ""}
                 />
