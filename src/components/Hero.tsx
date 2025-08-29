@@ -1,6 +1,7 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Bot } from "lucide-react";
+import CallMeForm from "./CallMeForm";
 
 const Hero = () => {
   const scrollToContact = () => {
@@ -35,16 +36,13 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="btn-orbit">
+            <CallMeForm className="btn-orbit">
               <Button 
-                size="lg" 
-                asChild
+                size="lg"
                 className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
               >
-                <a href="https://creator.voiceflow.com/prototype/687c300e0dde4cc3e9cbab8c" target="_blank" rel="noopener noreferrer">
-                  Hablar con un Agente
-                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </a>
+                Hablar con un Agente
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
               </Button>
 
               {/* Punto de luz animado recorriendo el borde */}
@@ -64,7 +62,7 @@ const Hero = () => {
                   className="btn-orbit-stroke"
                 />
               </svg>
-            </div>
+            </CallMeForm>
 
             <Button 
               size="lg" 
