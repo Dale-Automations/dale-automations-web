@@ -9,6 +9,7 @@ import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { Phone, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 
 const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -40,8 +41,24 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
     setIsSubmitting(true);
     
     try {
-      // Aquí se enviaría a tu endpoint de callback
-      await new Promise(resolve => setTimeout(resolve, 1000)); // Simulación
+      console.log("Submitting callback request:", data);
+      
+      const { data: result, error } = await supabase.functions.invoke(
+        'save-callback-lead',
+        {
+          body: {
+            name: data.name,
+            phone: data.phone
+          }
+        }
+      );
+
+      if (error) {
+        console.error("Supabase function error:", error);
+        throw new Error(error.message);
+      }
+
+      console.log("Callback request saved:", result);
       
       toast({
         title: "¡Solicitud enviada!",
@@ -50,7 +67,8 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
       
       reset();
       setOpen(false);
-    } catch (error) {
+    } catch (error: any) {
+      console.error("Error submitting callback request:", error);
       toast({
         title: "Error",
         description: "Hubo un problema. Inténtalo de nuevo.",
