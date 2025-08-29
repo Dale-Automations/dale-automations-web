@@ -8,37 +8,40 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50 transition-all duration-300">
-      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center space-x-2">
+      <div className="container mx-auto px-4 py-6">
+        {/* Logo centrado y más grande */}
+        <div className="flex justify-center mb-4">
           <img 
             src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
             alt="Dale Automations Logo" 
-            className="h-12 w-auto"
+            className="h-16 w-auto"
           />
         </div>
         
-        <nav className="hidden md:flex items-center space-x-8">
+        {/* Menú de navegación debajo del logo */}
+        <nav className="flex items-center justify-center space-x-8">
           <button 
             onClick={() => scrollToSection('solutions')}
-            className="text-foreground hover:text-primary transition-colors duration-300"
+            className="text-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
           >
             Soluciones
           </button>
           <button 
             onClick={() => scrollToSection('benefits')}
-            className="text-foreground hover:text-primary transition-colors duration-300"
+            className="text-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
           >
             Beneficios
           </button>
           <button 
             onClick={() => scrollToSection('cases')}
-            className="text-foreground hover:text-primary transition-colors duration-300"
+            className="text-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
           >
             Casos de Éxito
           </button>
           <Button 
             onClick={() => scrollToSection('contact')}
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-sm"
+            size="sm"
           >
             Contacto
           </Button>
