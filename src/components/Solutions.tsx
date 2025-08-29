@@ -115,6 +115,58 @@ const Solutions = () => {
             </CardContent>
           </Card>
         </div>
+
+        {/* Soluciones a Medida - Full Width */}
+        <div className="mt-12 max-w-6xl mx-auto">
+          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10">
+            <CardHeader className="text-center pb-6">
+              <CardTitle className="text-3xl font-bold text-brand-navy mb-4">
+                Soluciones a Medida
+              </CardTitle>
+              <CardDescription className="text-xl max-w-3xl mx-auto">
+                Integramos herramientas de IA personalizadas en tus procesos específicos
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-8">
+              <div className="grid md:grid-cols-3 gap-6">
+                <div className="text-center space-y-3">
+                  <div className="mx-auto w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center">
+                    <TrendingUp className="h-8 w-8 text-brand-blue" />
+                  </div>
+                  <h3 className="font-semibold text-brand-navy">Automatización de Procesos</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Identificamos procesos repetitivos y los automatizamos con IA
+                  </p>
+                </div>
+                <div className="text-center space-y-3">
+                  <div className="mx-auto w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center">
+                    <Users className="h-8 w-8 text-brand-blue" />
+                  </div>
+                  <h3 className="font-semibold text-brand-navy">Optimización de Recursos</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Mejoramos la eficiencia de tu equipo con herramientas inteligentes
+                  </p>
+                </div>
+                <div className="text-center space-y-3">
+                  <div className="mx-auto w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center">
+                    <MessageCircle className="h-8 w-8 text-brand-blue" />
+                  </div>
+                  <h3 className="font-semibold text-brand-navy">Reducción de Costos</h3>
+                  <p className="text-muted-foreground text-sm">
+                    Disminuimos gastos operativos mediante automatización inteligente
+                  </p>
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="text-lg text-muted-foreground max-w-4xl mx-auto">
+                  ¿Tienes procesos únicos en tu empresa? Creamos soluciones de IA completamente personalizadas 
+                  para automatizar tareas específicas, mejorar la productividad y reducir costos operativos. 
+                  Desde análisis de datos hasta integración con sistemas existentes.
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   );
