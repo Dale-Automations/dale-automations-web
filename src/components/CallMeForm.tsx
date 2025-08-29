@@ -60,59 +60,61 @@ const CallMeForm = ({ children, className }: CallMeFormProps) => {
   };
 
   return (
-    <Popover open={open} onOpenChange={setOpen}>
-      <PopoverTrigger asChild className={className}>
-        {children}
-      </PopoverTrigger>
-      <PopoverContent className="w-80 p-0" align="center">
-        <div className="p-6 space-y-4">
-          <div className="text-center space-y-2">
-            <div className="flex items-center justify-center gap-2 text-brand-blue">
-              <Phone className="h-5 w-5" />
-              <Clock className="h-4 w-4" />
+    <div className={className}>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          {children}
+        </PopoverTrigger>
+        <PopoverContent className="w-80 p-0" align="center">
+          <div className="p-6 space-y-4">
+            <div className="text-center space-y-2">
+              <div className="flex items-center justify-center gap-2 text-brand-blue">
+                <Phone className="h-5 w-5" />
+                <Clock className="h-4 w-4" />
+              </div>
+              <h3 className="font-semibold text-lg">Te llamamos instantáneamente</h3>
+              <p className="text-sm text-muted-foreground">Disponible 24/7</p>
             </div>
-            <h3 className="font-semibold text-lg">Te llamamos instantáneamente</h3>
-            <p className="text-sm text-muted-foreground">Disponible 24/7</p>
+
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="name">Nombre</Label>
+                <Input
+                  id="name"
+                  placeholder="Tu nombre completo"
+                  {...register("name")}
+                  className={errors.name ? "border-destructive" : ""}
+                />
+                {errors.name && (
+                  <p className="text-sm text-destructive">{errors.name.message}</p>
+                )}
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="phone">Teléfono</Label>
+                <Input
+                  id="phone"
+                  placeholder="Tu número de teléfono"
+                  {...register("phone")}
+                  className={errors.phone ? "border-destructive" : ""}
+                />
+                {errors.phone && (
+                  <p className="text-sm text-destructive">{errors.phone.message}</p>
+                )}
+              </div>
+
+              <Button 
+                type="submit" 
+                className="w-full bg-gradient-primary"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Enviando..." : "Llamar Ahora"}
+              </Button>
+            </form>
           </div>
-
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            <div className="space-y-2">
-              <Label htmlFor="name">Nombre</Label>
-              <Input
-                id="name"
-                placeholder="Tu nombre completo"
-                {...register("name")}
-                className={errors.name ? "border-destructive" : ""}
-              />
-              {errors.name && (
-                <p className="text-sm text-destructive">{errors.name.message}</p>
-              )}
-            </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="phone">Teléfono</Label>
-              <Input
-                id="phone"
-                placeholder="Tu número de teléfono"
-                {...register("phone")}
-                className={errors.phone ? "border-destructive" : ""}
-              />
-              {errors.phone && (
-                <p className="text-sm text-destructive">{errors.phone.message}</p>
-              )}
-            </div>
-
-            <Button 
-              type="submit" 
-              className="w-full bg-gradient-primary"
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Enviando..." : "Llamar Ahora"}
-            </Button>
-          </form>
-        </div>
-      </PopoverContent>
-    </Popover>
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 };
 
