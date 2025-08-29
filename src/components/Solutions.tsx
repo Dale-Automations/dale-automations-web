@@ -11,9 +11,6 @@ const Solutions = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
             Nuestras Soluciones
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Soluciones pre-armadas de IA diseñadas para potenciar tu negocio
-          </p>
         </div>
 
         {/* Soluciones a Medida - Full Width */}
@@ -66,6 +63,16 @@ const Solutions = () => {
               </div>
             </CardContent>
           </Card>
+        </div>
+
+        {/* Soluciones Pre-armadas */}
+        <div className="text-center mb-12">
+          <h3 className="text-3xl font-bold text-brand-navy mb-4">
+            Soluciones Pre-armadas
+          </h3>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            Herramientas de IA listas para implementar en tu negocio
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
