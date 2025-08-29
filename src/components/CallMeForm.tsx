@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
 import { Phone, Clock } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -18,10 +19,11 @@ type FormData = z.infer<typeof formSchema>;
 
 interface CallMeFormProps {
   children: React.ReactNode;
-  className?: string;
+  className?: string; // wrapper (e.g., for orbit effect)
+  triggerClassName?: string; // styles for the clickable trigger button
 }
 
-const CallMeForm = ({ children, className }: CallMeFormProps) => {
+const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) => {
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -62,7 +64,12 @@ const CallMeForm = ({ children, className }: CallMeFormProps) => {
   return (
     <div className={className}>
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger asChild>
+        <PopoverTrigger
+          className={cn(
+            "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-primary hover:shadow-glow text-lg px-8 py-4 group",
+            triggerClassName
+          )}
+        >
           {children}
         </PopoverTrigger>
         <PopoverContent className="w-80 p-0" align="center">
