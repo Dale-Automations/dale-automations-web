@@ -2,3 +2,6 @@ project_id = "vcwgogpzihsailxfoanq"
 
 [functions.send-contact-email]
 verify_jwt = false
+
+[functions.save-callback-lead]
+verify_jwt = false
