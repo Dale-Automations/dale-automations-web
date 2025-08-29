@@ -37,11 +37,14 @@ const Hero = () => {
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="btn-orbit">
-              <CallMeForm
-                triggerClassName="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
-              >
-                Hablar con un Agente
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+              <CallMeForm>
+                <Button 
+                  size="lg"
+                  className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
+                >
+                  Hablar con un Agente
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
               </CallMeForm>
 
               {/* Punto de luz animado recorriendo el borde */}

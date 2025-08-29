@@ -64,12 +64,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
   return (
     <div className={className}>
       <Popover open={open} onOpenChange={setOpen}>
-        <PopoverTrigger
-          className={cn(
-            "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-gradient-primary hover:shadow-glow text-lg px-8 py-4 group",
-            triggerClassName
-          )}
-        >
+        <PopoverTrigger asChild>
           {children}
         </PopoverTrigger>
         <PopoverContent className="w-80 p-0" align="center">
