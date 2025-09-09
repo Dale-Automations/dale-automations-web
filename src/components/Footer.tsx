@@ -1,7 +1,10 @@
 
 import { Bot, Mail, Phone, MapPin } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
+  
   return (
     <footer className="bg-brand-navy text-primary-foreground py-12">
       <div className="container mx-auto px-4">

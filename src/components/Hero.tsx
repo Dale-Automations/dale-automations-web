@@ -1,9 +1,12 @@
 
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Bot } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 import CallMeForm from "./CallMeForm";
 
 const Hero = () => {
+  const { t } = useTranslation();
+  
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -25,14 +28,11 @@ const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
-            Automatiza tu Negocio
-            <br />
-            con Inteligencia Artificial
+            {t('hero.title')}
           </h1>
           
           <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-            Transformamos tu empresa con soluciones de IA que trabajan 24/7. 
-            Más eficiencia, menos costos, mejores resultados.
+            {t('hero.subtitle')}
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -42,7 +42,7 @@ const Hero = () => {
                   size="lg"
                   className="relative bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-4 group"
                 >
-                  Hablar con un Agente
+                  {t('hero.talkToAgent')}
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </CallMeForm>
@@ -72,7 +72,7 @@ const Hero = () => {
               onClick={() => document.getElementById('solutions')?.scrollIntoView({ behavior: 'smooth' })}
               className="border-brand-blue text-brand-navy hover:bg-brand-blue/10 transition-all duration-300 text-lg px-8 py-4"
             >
-              Ver Soluciones
+              {t('hero.viewSolutions')}
             </Button>
           </div>
         </div>

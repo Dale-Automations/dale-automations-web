@@ -1,6 +1,7 @@
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import './i18n';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FloatingChatButton from "@/components/FloatingChatButton";

@@ -1,0 +1,137 @@
+{
+  "header": {
+    "solutions": "Solutions",
+    "benefits": "Benefits",
+    "successCases": "Success Cases",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Transform Your Business With Artificial Intelligence",
+    "subtitle": "Automate processes, reduce costs and multiply your productivity with our personalized AI solutions. From intelligent chatbots to complete management systems.",
+    "talkToAgent": "Talk to an Agent",
+    "viewSolutions": "View Solutions"
+  },
+  "solutions": {
+    "title": "Our Solutions",
+    "subtitle": "We power your business with cutting-edge technologies",
+    "custom": {
+      "title": "Custom Solutions",
+      "subtitle": "Personalized AI Development",
+      "description": "We create unique solutions perfectly adapted to your business's specific needs.",
+      "features": {
+        "automation": "Complex process automation",
+        "optimization": "Resource and time optimization",
+        "reduction": "Operational cost reduction"
+      }
+    },
+    "ascend": {
+      "title": "Ascend AI",
+      "subtitle": "Intelligent Call System",
+      "description": "Revolutionize your customer service and sales with our advanced conversational AI system.",
+      "features": {
+        "natural": "Natural and intelligent conversations",
+        "integration": "Integration with CRM and existing systems",
+        "analytics": "Real-time analysis and reports"
+      }
+    },
+    "social": {
+      "title": "Social Media AI",
+      "subtitle": "Content Automation",
+      "description": "Completely automate your social media presence with personalized and strategic content.",
+      "features": {
+        "content": "Automatic content creation",
+        "scheduling": "Intelligent post scheduling",
+        "engagement": "Automatic responses and engagement"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Why Automate with AI?",
+    "subtitle": "Discover the benefits that will transform your business",
+    "items": {
+      "time": {
+        "title": "Time Savings",
+        "description": "Automate repetitive tasks and free up time for strategic activities"
+      },
+      "cost": {
+        "title": "Cost Reduction",
+        "description": "Decrease operational expenses by up to 60% with intelligent automation"
+      },
+      "scalability": {
+        "title": "Scalability",
+        "description": "Grow without limits. Our solutions adapt to your business growth"
+      },
+      "availability": {
+        "title": "24/7 Availability",
+        "description": "Services that never sleep. Continuous attention for your customers"
+      },
+      "response": {
+        "title": "Instant Response",
+        "description": "Response times in seconds, not hours or days"
+      },
+      "experience": {
+        "title": "Better Experience",
+        "description": "More satisfied customers with personalized and immediate attention"
+      }
+    }
+  },
+  "successCases": {
+    "title": "Success Cases",
+    "subtitle": "Real stories of digital transformation",
+    "belu": {
+      "title": "Marketing with Belu",
+      "challenge": "The Challenge",
+      "challengeText": "Belu needed to automate her digital marketing strategy and generate constant content for multiple platforms, but didn't have the time or resources to maintain an active social media presence.",
+      "solution": "The Solution",
+      "solutionText": "We implemented our Social Media AI system that completely automates content creation, post scheduling, and comment responses.",
+      "results": "Results",
+      "resultsText": "300% more engagement, 5 weekly hours saved, 150% growth in followers"
+    },
+    "gm": {
+      "title": "GM Courses",
+      "challenge": "The Challenge",
+      "challengeText": "An online course platform that received hundreds of daily inquiries about their programs, but their team couldn't respond on time, losing potential students.",
+      "solution": "The Solution",
+      "solutionText": "We developed Ascend AI, an automated customer service system that answers inquiries 24 hours a day, schedules calls, and automatically qualifies leads.",
+      "results": "Results",
+      "resultsText": "85% of inquiries resolved automatically, 40% more conversions, 24/7 service"
+    }
+  },
+  "contact": {
+    "title": "Ready to Automate?",
+    "subtitle": "Schedule a free consultation and discover how AI can transform your business",
+    "form": {
+      "name": "Full name",
+      "phone": "Phone",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send Message"
+    }
+  },
+  "footer": {
+    "company": "Dale Automations",
+    "description": "We transform businesses with personalized Artificial Intelligence solutions. Automate, optimize and grow with cutting-edge technology.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Information",
+    "email": "hello@daleautomations.com",
+    "phone": "+1 (305) 123-4567",
+    "locations": "Miami, USA | Buenos Aires, Argentina",
+    "copyright": "© 2024 Dale Automations. All rights reserved.",
+    "poweredBy": "Powered by Artificial Intelligence"
+  },
+  "callMe": {
+    "title": "Request Call",
+    "subtitle": "Fill out the form and we'll contact you within 24 hours",
+    "form": {
+      "name": "Full name",
+      "phone": "Phone",
+      "submit": "Call Now",
+      "sending": "Sending..."
+    },
+    "success": "Perfect! We'll contact you soon.",
+    "error": "Error sending. Please try again."
+  },
+  "floating": {
+    "talkToAgent": "Talk to an Agent"
+  }
+}

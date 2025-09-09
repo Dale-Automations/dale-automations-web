@@ -1,37 +1,40 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, DollarSign, TrendingUp, Shield, Zap, Users } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const Benefits = () => {
+  const { t } = useTranslation();
+  
   const benefits = [
     {
       icon: Clock,
-      title: "Ahorro de Tiempo",
-      description: "Automatiza tareas repetitivas y libera tiempo para actividades estratégicas"
+      titleKey: "benefits.items.time.title",
+      descriptionKey: "benefits.items.time.description"
     },
     {
       icon: DollarSign,
-      title: "Reducción de Costos",
-      description: "Disminuye gastos operativos hasta en un 60% con automatización inteligente"
+      titleKey: "benefits.items.cost.title",
+      descriptionKey: "benefits.items.cost.description"
     },
     {
       icon: TrendingUp,
-      title: "Escalabilidad",
-      description: "Crece sin límites. Nuestras soluciones se adaptan al crecimiento de tu negocio"
+      titleKey: "benefits.items.scalability.title",
+      descriptionKey: "benefits.items.scalability.description"
     },
     {
       icon: Shield,
-      title: "Disponibilidad 24/7",
-      description: "Servicios que nunca duermen. Atención continua para tus clientes"
+      titleKey: "benefits.items.availability.title",
+      descriptionKey: "benefits.items.availability.description"
     },
     {
       icon: Zap,
-      title: "Respuesta Instantánea",
-      description: "Tiempos de respuesta en segundos, no en horas o días"
+      titleKey: "benefits.items.response.title",
+      descriptionKey: "benefits.items.response.description"
     },
     {
       icon: Users,
-      title: "Mejor Experiencia",
-      description: "Clientes más satisfechos con atención personalizada e inmediata"
+      titleKey: "benefits.items.experience.title",
+      descriptionKey: "benefits.items.experience.description"
     }
   ];
 
@@ -40,10 +43,10 @@ const Benefits = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            ¿Por qué Automatizar con IA?
+            {t('benefits.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Descubre los beneficios que transformarán tu negocio
+            {t('benefits.subtitle')}
           </p>
         </div>
 
@@ -60,12 +63,12 @@ const Benefits = () => {
                   </div>
                 </div>
                 <CardTitle className="text-xl font-bold text-brand-navy mb-2">
-                  {benefit.title}
+                  {t(benefit.titleKey)}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground text-center leading-relaxed">
-                  {benefit.description}
+                  {t(benefit.descriptionKey)}
                 </p>
               </CardContent>
             </Card>

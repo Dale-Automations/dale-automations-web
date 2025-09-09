@@ -10,6 +10,7 @@ import { toast } from "@/hooks/use-toast";
 import { Phone, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+import { useTranslation } from 'react-i18next';
 
 const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
@@ -25,6 +26,7 @@ interface CallMeFormProps {
 }
 
 const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -61,8 +63,8 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
       console.log("Callback request saved:", result);
       
       toast({
-        title: "¡Solicitud enviada!",
-        description: "Te llamaremos en los próximos minutos.",
+        title: t('callMe.success'),
+        description: t('callMe.success'),
       });
       
       reset();
@@ -71,7 +73,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
       console.error("Error submitting callback request:", error);
       toast({
         title: "Error",
-        description: "Hubo un problema. Inténtalo de nuevo.",
+        description: t('callMe.error'),
         variant: "destructive",
       });
     } finally {
@@ -92,16 +94,16 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                 <Phone className="h-5 w-5" />
                 <Clock className="h-4 w-4" />
               </div>
-              <h3 className="font-semibold text-lg">Te llamamos instantáneamente</h3>
-              <p className="text-sm text-muted-foreground">Disponible 24/7</p>
+              <h3 className="font-semibold text-lg">{t('callMe.title')}</h3>
+              <p className="text-sm text-muted-foreground">{t('callMe.subtitle')}</p>
             </div>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Nombre</Label>
+                <Label htmlFor="name">{t('callMe.form.name')}</Label>
                 <Input
                   id="name"
-                  placeholder="Nombre"
+                  placeholder={t('callMe.form.name')}
                   {...register("name")}
                   className={errors.name ? "border-destructive" : ""}
                 />
@@ -111,7 +113,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone">Teléfono</Label>
+                <Label htmlFor="phone">{t('callMe.form.phone')}</Label>
                 <Input
                   id="phone"
                   placeholder="+541123456789"
@@ -128,7 +130,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                 className="w-full bg-gradient-primary"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Enviando..." : "Llamar Ahora"}
+                {isSubmitting ? t('callMe.form.sending') : t('callMe.form.submit')}
               </Button>
             </form>
           </div>

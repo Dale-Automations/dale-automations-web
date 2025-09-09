@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from './LanguageSelector';
 
 const Header = () => {
+  const { t } = useTranslation();
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -25,28 +29,31 @@ const Header = () => {
               onClick={() => scrollToSection('solutions')}
               className="text-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm font-medium whitespace-nowrap"
             >
-              Soluciones
+              {t('header.solutions')}
             </button>
             <button 
               onClick={() => scrollToSection('benefits')}
               className="text-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm font-medium whitespace-nowrap"
             >
-              Beneficios
+              {t('header.benefits')}
             </button>
             <button 
               onClick={() => scrollToSection('cases')}
               className="text-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm font-medium whitespace-nowrap"
             >
-              Casos de Éxito
+              {t('header.successCases')}
             </button>
           </div>
-          <Button 
-            onClick={() => scrollToSection('contact')}
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-xs sm:text-sm mt-2 sm:mt-0"
-            size="sm"
-          >
-            Contacto
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button 
+              onClick={() => scrollToSection('contact')}
+              className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-xs sm:text-sm"
+              size="sm"
+            >
+              {t('header.contact')}
+            </Button>
+            <LanguageSelector />
+          </div>
         </nav>
       </div>
     </header>

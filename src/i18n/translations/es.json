@@ -1,0 +1,137 @@
+{
+  "header": {
+    "solutions": "Soluciones",
+    "benefits": "Beneficios",
+    "successCases": "Casos de Éxito",
+    "contact": "Contacto"
+  },
+  "hero": {
+    "title": "Transforma Tu Negocio Con Inteligencia Artificial",
+    "subtitle": "Automatiza procesos, reduce costos y multiplica tu productividad con nuestras soluciones de IA personalizadas. Desde chatbots inteligentes hasta sistemas de gestión completos.",
+    "talkToAgent": "Hablar con un Agente",
+    "viewSolutions": "Ver Soluciones"
+  },
+  "solutions": {
+    "title": "Nuestras Soluciones",
+    "subtitle": "Potenciamos tu negocio con tecnologías de vanguardia",
+    "custom": {
+      "title": "Soluciones a Medida",
+      "subtitle": "Desarrollo Personalizado de IA",
+      "description": "Creamos soluciones únicas adaptadas perfectamente a las necesidades específicas de tu negocio.",
+      "features": {
+        "automation": "Automatización de procesos complejos",
+        "optimization": "Optimización de recursos y tiempo",
+        "reduction": "Reducción de costos operativos"
+      }
+    },
+    "ascend": {
+      "title": "Ascend AI",
+      "subtitle": "Sistema Inteligente de Llamadas",
+      "description": "Revoluciona tu atención al cliente y ventas con nuestro sistema de IA conversacional avanzado.",
+      "features": {
+        "natural": "Conversaciones naturales e inteligentes",
+        "integration": "Integración con CRM y sistemas existentes",
+        "analytics": "Análisis y reportes en tiempo real"
+      }
+    },
+    "social": {
+      "title": "Redes Sociales IA",
+      "subtitle": "Automatización de Contenido",
+      "description": "Automatiza completamente tu presencia en redes sociales con contenido personalizado y estratégico.",
+      "features": {
+        "content": "Creación automática de contenido",
+        "scheduling": "Programación inteligente de publicaciones",
+        "engagement": "Respuestas automáticas y engagement"
+      }
+    }
+  },
+  "benefits": {
+    "title": "¿Por qué Automatizar con IA?",
+    "subtitle": "Descubre los beneficios que transformarán tu negocio",
+    "items": {
+      "time": {
+        "title": "Ahorro de Tiempo",
+        "description": "Automatiza tareas repetitivas y libera tiempo para actividades estratégicas"
+      },
+      "cost": {
+        "title": "Reducción de Costos",
+        "description": "Disminuye gastos operativos hasta en un 60% con automatización inteligente"
+      },
+      "scalability": {
+        "title": "Escalabilidad",
+        "description": "Crece sin límites. Nuestras soluciones se adaptan al crecimiento de tu negocio"
+      },
+      "availability": {
+        "title": "Disponibilidad 24/7",
+        "description": "Servicios que nunca duermen. Atención continua para tus clientes"
+      },
+      "response": {
+        "title": "Respuesta Instantánea",
+        "description": "Tiempos de respuesta en segundos, no en horas o días"
+      },
+      "experience": {
+        "title": "Mejor Experiencia",
+        "description": "Clientes más satisfechos con atención personalizada e inmediata"
+      }
+    }
+  },
+  "successCases": {
+    "title": "Casos de Éxito",
+    "subtitle": "Historias reales de transformación digital",
+    "belu": {
+      "title": "Marketing con Belu",
+      "challenge": "El Desafío",
+      "challengeText": "Belu necesitaba automatizar su estrategia de marketing digital y generar contenido constante para múltiples plataformas, pero no tenía el tiempo ni los recursos para mantener una presencia activa en redes sociales.",
+      "solution": "La Solución",
+      "solutionText": "Implementamos nuestro sistema de Redes Sociales IA que automatiza completamente la creación de contenido, programación de publicaciones y respuestas a comentarios.",
+      "results": "Resultados",
+      "resultsText": "300% más engagement, 5 horas semanales ahorradas, crecimiento del 150% en seguidores"
+    },
+    "gm": {
+      "title": "Cursos GM",
+      "challenge": "El Desafío",
+      "challengeText": "Una plataforma de cursos online que recibía cientos de consultas diarias sobre sus programas, pero su equipo no podía responder a tiempo, perdiendo potenciales estudiantes.",
+      "solution": "La Solución",
+      "solutionText": "Desarrollamos Ascend AI, un sistema de atención automatizada que responde consultas las 24 horas, agenda llamadas y califica leads automáticamente.",
+      "results": "Resultados",
+      "resultsText": "85% de consultas resueltas automáticamente, 40% más conversiones, atención 24/7"
+    }
+  },
+  "contact": {
+    "title": "¿Listo para Automatizar?",
+    "subtitle": "Agenda una consulta gratuita y descubre cómo la IA puede transformar tu negocio",
+    "form": {
+      "name": "Nombre completo",
+      "phone": "Teléfono",
+      "email": "Email",
+      "message": "Mensaje",
+      "send": "Enviar Mensaje"
+    }
+  },
+  "footer": {
+    "company": "Dale Automations",
+    "description": "Transformamos negocios con soluciones de Inteligencia Artificial personalizadas. Automatiza, optimiza y crece con tecnología de vanguardia.",
+    "quickLinks": "Enlaces Rápidos",
+    "contactInfo": "Información de Contacto",
+    "email": "hola@daleautomations.com",
+    "phone": "+54 9 11 1234-5678",
+    "locations": "Buenos Aires, Argentina | Miami, USA",
+    "copyright": "© 2024 Dale Automations. Todos los derechos reservados.",
+    "poweredBy": "Potenciado por Inteligencia Artificial"
+  },
+  "callMe": {
+    "title": "Solicitar Llamada",
+    "subtitle": "Completa el formulario y te contactamos en menos de 24 horas",
+    "form": {
+      "name": "Nombre completo",
+      "phone": "Teléfono",
+      "submit": "Llamar Ahora",
+      "sending": "Enviando..."
+    },
+    "success": "¡Perfecto! Te contactaremos pronto.",
+    "error": "Error al enviar. Intenta nuevamente."
+  },
+  "floating": {
+    "talkToAgent": "Hablar con un Agente"
+  }
+}

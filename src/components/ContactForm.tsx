@@ -5,9 +5,11 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
 import { Mail, Phone, MessageCircle, Send } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 
 const ContactForm = () => {
+  const { t } = useTranslation();
   const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: '',

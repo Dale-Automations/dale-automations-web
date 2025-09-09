@@ -1,8 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 import CallMeForm from "./CallMeForm";
 
 const FloatingChatButton = () => {
+  const { t } = useTranslation();
+  
   return (
     <div className="fixed bottom-6 right-6 z-50">
       <CallMeForm>
@@ -11,7 +14,7 @@ const FloatingChatButton = () => {
           className="bg-gradient-primary hover:shadow-glow transition-all duration-300 rounded-full p-4 shadow-lg hover:scale-105 group flex items-center gap-2"
         >
           <MessageCircle className="h-6 w-6" />
-          <span className="hidden sm:inline font-medium">Hablar con un Agente</span>
+          <span className="hidden sm:inline font-medium">{t('floating.talkToAgent')}</span>
         </Button>
       </CallMeForm>
     </div>
