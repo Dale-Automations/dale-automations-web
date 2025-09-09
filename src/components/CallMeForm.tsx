@@ -123,7 +123,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                 <Label htmlFor="phone">{t('callMe.form.phone')}</Label>
                 <Input
                   id="phone"
-                  placeholder="+541123456789"
+                  placeholder={i18n.language === 'en' ? '+1(123)456-7890' : '+541123456789'}
                   {...register("phone")}
                   className={errors.phone ? "border-destructive" : ""}
                 />
