@@ -41,7 +41,7 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      language: i18n.language as "es" | "en"
+      language: (i18n?.language || "es") as "es" | "en"
     }
   });
 
