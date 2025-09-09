@@ -167,7 +167,7 @@ const Solutions = () => {
                 </div>
                 <div className="flex items-center space-x-2">
                   <Calendar className="h-5 w-5 text-brand-blue" />
-                  <span className="text-sm">{t('solutions.social.features.engagement')}</span>
+                  <span className="text-sm">{t('solutions.social.features.analytics')}</span>
                 </div>
               </div>
               <p className="text-muted-foreground mt-4">

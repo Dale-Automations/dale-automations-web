@@ -45,7 +45,8 @@
       "features": {
         "content": "Creación automática de contenido",
         "scheduling": "Programación inteligente de publicaciones",
-        "engagement": "Respuestas automáticas y engagement"
+        "engagement": "Respuestas automáticas y engagement",
+        "analytics": "Análisis y reportes automáticos"
       }
     }
   },
