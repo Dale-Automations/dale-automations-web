@@ -120,7 +120,7 @@
       "email": "Email",
       "message": "Cuéntanos sobre tu proyecto o qué automatización necesitas...",
       "send": "Enviar Mensaje",
-      "optional": "opcional si querés probar Ascend"
+      "optional": "opcional"
     }
   },
   "footer": {

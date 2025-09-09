@@ -120,7 +120,7 @@
       "email": "Email",
       "message": "Message",
       "send": "Send Message",
-      "optional": "optional if you want to try Ascend"
+      "optional": "optional"
     }
   },
   "footer": {
