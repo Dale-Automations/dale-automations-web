@@ -85,10 +85,10 @@ const ContactForm = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            ¿Listo para Automatizar?
+            {t('contact.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Contáctanos y descubre cómo podemos transformar tu negocio con IA
+            {t('contact.subtitle')}
           </p>
         </div>
 
@@ -101,17 +101,17 @@ const ContactForm = () => {
                 </div>
               </div>
               <CardTitle className="text-2xl font-bold text-brand-navy">
-                Hablemos de tu Proyecto
+                {t('contact.title')}
               </CardTitle>
               <CardDescription className="text-lg">
-                Completa el formulario y nuestro equipo te contactará
+                {t('contact.subtitle')}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-brand-navy font-medium">
-                    Nombre *
+                    {t('contact.form.name')} *
                   </Label>
                   <div className="relative">
                     <Input
@@ -120,7 +120,7 @@ const ContactForm = () => {
                       type="text"
                       value={formData.name}
                       onChange={handleInputChange}
-                      placeholder="Tu nombre completo"
+                      placeholder={t('contact.form.name')}
                       className="pl-10 border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                       required
                     />
@@ -130,7 +130,7 @@ const ContactForm = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="phone" className="text-brand-navy font-medium">
-                    Teléfono <span className="text-muted-foreground">(opcional si querés probar Ascend)</span>
+                    {t('contact.form.phone')} <span className="text-muted-foreground">({t('contact.form.optional')})</span>
                   </Label>
                   <div className="relative">
                     <Input
@@ -139,7 +139,7 @@ const ContactForm = () => {
                       type="tel"
                       value={formData.phone}
                       onChange={handleInputChange}
-                      placeholder="Tu teléfono"
+                      placeholder={t('contact.form.phone')}
                       className="pl-10 border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                     />
                     <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-brand-blue" />
@@ -148,7 +148,7 @@ const ContactForm = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="email" className="text-brand-navy font-medium">
-                    Email *
+                    {t('contact.form.email')} *
                   </Label>
                   <div className="relative">
                     <Input
@@ -157,7 +157,7 @@ const ContactForm = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="tu@email.com"
+                      placeholder={t('contact.form.email')}
                       className="pl-10 border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                       required
                     />
@@ -167,14 +167,14 @@ const ContactForm = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-brand-navy font-medium">
-                    Mensaje <span className="text-muted-foreground">(opcional)</span>
+                    {t('contact.form.message')} <span className="text-muted-foreground">({t('contact.form.optional')})</span>
                   </Label>
                   <Textarea
                     id="message"
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Cuéntanos sobre tu proyecto o qué automatización necesitas..."
+                    placeholder={t('contact.form.message')}
                     className="min-h-[120px] border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                     rows={5}
                   />
@@ -185,7 +185,7 @@ const ContactForm = () => {
                   size="lg" 
                   className="w-full bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg py-6 group"
                 >
-                  Enviar Mensaje
+                  {t('contact.form.send')}
                   <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
                 </Button>
               </form>
