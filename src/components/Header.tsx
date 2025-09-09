@@ -1,9 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { useTranslation } from 'react-i18next';
+import { useState, useEffect } from 'react';
 import LanguageSelector from './LanguageSelector';
 
 const Header = () => {
   const { t } = useTranslation();
+  const [showIntro, setShowIntro] = useState(true);
+  
+  useEffect(() => {
+    // Terminar la animación después de 2.5 segundos
+    const timer = setTimeout(() => {
+      setShowIntro(false);
+    }, 2500);
+    
+    return () => clearTimeout(timer);
+  }, []);
   
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -11,16 +22,28 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50 transition-all duration-300">
-      <div className="container mx-auto px-4 py-4 md:py-6">
-        {/* Logo centrado y más grande */}
-        <div className="flex justify-center mb-3 md:mb-4">
+    <>
+      {/* Logo Intro Overlay */}
+      {showIntro && (
+        <div className="fixed inset-0 bg-background z-50 flex items-center justify-center">
           <img 
             src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
             alt="Dale Automations Logo" 
-            className="h-16 md:h-20 w-auto"
+            className="logo-intro h-20 md:h-24 w-auto"
           />
         </div>
+      )}
+      
+      <header className={`fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-40 transition-all duration-300 ${showIntro ? 'opacity-0' : 'page-intro'}`}>
+        <div className="container mx-auto px-4 py-4 md:py-6">
+          {/* Logo centrado y más grande */}
+          <div className="flex justify-center mb-3 md:mb-4">
+            <img 
+              src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
+              alt="Dale Automations Logo" 
+              className="h-16 md:h-20 w-auto"
+            />
+          </div>
         
         {/* Menú de navegación debajo del logo */}
         <nav className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 md:gap-8">
@@ -55,6 +78,7 @@ const Header = () => {
         </nav>
       </div>
     </header>
+    </>
   );
 };
 
