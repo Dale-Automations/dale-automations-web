@@ -2,12 +2,13 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "@/hooks/use-toast";
-import { Phone, Clock } from "lucide-react";
+import { Phone, Clock, Globe } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,7 @@ import { useTranslation } from 'react-i18next';
 const formSchema = z.object({
   name: z.string().min(2, "El nombre debe tener al menos 2 caracteres"),
   phone: z.string().min(8, "Ingresa un teléfono válido"),
+  language: z.enum(["es", "en"], { required_error: "Selecciona un idioma" }),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -26,7 +28,7 @@ interface CallMeFormProps {
 }
 
 const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -34,9 +36,13 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors },
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      language: i18n.language as "es" | "en"
+    }
   });
 
   const onSubmit = async (data: FormData) => {
@@ -50,7 +56,8 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
         {
           body: {
             name: data.name,
-            phone: data.phone
+            phone: data.phone,
+            language: data.language
           }
         }
       );
@@ -125,7 +132,41 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                 )}
               </div>
 
-              <Button 
+              <div className="space-y-2">
+                <Label htmlFor="language">{t('callMe.form.language')}</Label>
+                <Controller
+                  name="language"
+                  control={control}
+                  render={({ field }) => (
+                    <Select onValueChange={field.onChange} value={field.value}>
+                      <SelectTrigger className={errors.language ? "border-destructive" : ""}>
+                        <SelectValue placeholder={t('callMe.form.selectLanguage')} />
+                      </SelectTrigger>
+                      <SelectContent className="bg-background border shadow-lg">
+                        <SelectItem value="es">
+                          <div className="flex items-center gap-2">
+                            <span>🇪🇸</span>
+                            <span>Español</span>
+                            <span className="text-xs text-muted-foreground ml-2">+54 11 3662-6658</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="en">
+                          <div className="flex items-center gap-2">
+                            <span>🇺🇸</span>
+                            <span>English</span>
+                            <span className="text-xs text-muted-foreground ml-2">+1 (346) 492-9025</span>
+                          </div>
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  )}
+                />
+                {errors.language && (
+                  <p className="text-sm text-destructive">{errors.language.message}</p>
+                )}
+              </div>
+
+              <Button
                 type="submit" 
                 className="w-full bg-gradient-primary"
                 disabled={isSubmitting}

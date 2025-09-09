@@ -125,6 +125,8 @@
     "form": {
       "name": "Nombre completo",
       "phone": "Teléfono",
+      "language": "Idioma de atención",
+      "selectLanguage": "Selecciona idioma",
       "submit": "Llamar Ahora",
       "sending": "Enviando..."
     },

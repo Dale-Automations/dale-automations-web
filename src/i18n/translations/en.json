@@ -125,6 +125,8 @@
     "form": {
       "name": "Full name",
       "phone": "Phone",
+      "language": "Service language",
+      "selectLanguage": "Select language",
       "submit": "Call Now",
       "sending": "Sending..."
     },
