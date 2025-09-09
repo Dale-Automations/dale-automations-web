@@ -14,6 +14,10 @@
   "solutions": {
     "title": "Our Solutions",
     "subtitle": "We power your business with cutting-edge technologies",
+    "preBuilt": {
+      "title": "Pre-built Solutions",
+      "subtitle": "Ready-to-implement AI tools for your business"
+    },
     "custom": {
       "title": "Custom Solutions",
       "subtitle": "Personalized AI Development",

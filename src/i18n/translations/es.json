@@ -14,6 +14,10 @@
   "solutions": {
     "title": "Nuestras Soluciones",
     "subtitle": "Potenciamos tu negocio con tecnologías de vanguardia",
+    "preBuilt": {
+      "title": "Soluciones Pre-armadas",
+      "subtitle": "Herramientas de IA listas para implementar en tu negocio"
+    },
     "custom": {
       "title": "Soluciones a Medida",
       "subtitle": "Desarrollo Personalizado de IA",

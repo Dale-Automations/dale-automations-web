@@ -72,10 +72,10 @@ const Solutions = () => {
         {/* Soluciones Pre-armadas */}
         <div className="text-center mb-12">
           <h3 className="text-3xl font-bold text-brand-navy mb-4">
-            Soluciones Pre-armadas
+            {t('solutions.preBuilt.title')}
           </h3>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Herramientas de IA listas para implementar en tu negocio
+            {t('solutions.preBuilt.subtitle')}
           </p>
         </div>
 
