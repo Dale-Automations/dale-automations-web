@@ -117,8 +117,8 @@
     "form": {
       "name": "Full name",
       "phone": "Phone number",
-      "email": "your@email.com",
-      "message": "Tell us about your project or what automation you need...",
+      "email": "Email",
+      "message": "Message",
       "send": "Send Message",
       "optional": "optional if you want to try Ascend"
     }
