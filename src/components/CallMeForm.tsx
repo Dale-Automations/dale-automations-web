@@ -142,22 +142,20 @@ const CallMeForm = ({ children, className, triggerClassName }: CallMeFormProps) 
                       <SelectTrigger className={errors.language ? "border-destructive" : ""}>
                         <SelectValue placeholder={t('callMe.form.selectLanguage')} />
                       </SelectTrigger>
-                      <SelectContent className="bg-background border shadow-lg">
-                        <SelectItem value="es">
-                          <div className="flex items-center gap-2">
-                            <span>🇪🇸</span>
-                            <span>Español</span>
-                            <span className="text-xs text-muted-foreground ml-2">+54 11 3662-6658</span>
-                          </div>
-                        </SelectItem>
-                        <SelectItem value="en">
-                          <div className="flex items-center gap-2">
-                            <span>🇺🇸</span>
-                            <span>English</span>
-                            <span className="text-xs text-muted-foreground ml-2">+1 (346) 492-9025</span>
-                          </div>
-                        </SelectItem>
-                      </SelectContent>
+                        <SelectContent className="bg-background border shadow-lg">
+                          <SelectItem value="es">
+                            <div className="flex items-center gap-2">
+                              <span>🇪🇸</span>
+                              <span>Español</span>
+                            </div>
+                          </SelectItem>
+                          <SelectItem value="en">
+                            <div className="flex items-center gap-2">
+                              <span>🇺🇸</span>
+                              <span>English</span>
+                            </div>
+                          </SelectItem>
+                        </SelectContent>
                     </Select>
                   )}
                 />
