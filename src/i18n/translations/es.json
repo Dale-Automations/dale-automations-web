@@ -80,6 +80,7 @@
     "subtitle": "Historias reales de transformación digital",
     "belu": {
       "title": "Marketing con Belu",
+      "subtitle": "Automatización de ventas e integración con Kajabi",
       "challenge": "El Desafío",
       "challengeText": "Proceso manual de alta de clientes en Kajabi después de cada compra",
       "solution": "La Solución",
@@ -89,6 +90,7 @@
     },
     "gm": {
       "title": "Cursos GM",
+      "subtitle": "Integración Tienda Nube → TiendUp vía Browserflow",
       "challenge": "El Desafío",
       "challengeText": "Gestión manual de ventas entre Tienda Nube y TiendUp",
       "solution": "La Solución",

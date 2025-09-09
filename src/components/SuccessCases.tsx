@@ -33,7 +33,7 @@ const SuccessCases = () => {
                       {t('successCases.belu.title')}
                     </CardTitle>
                     <CardDescription>
-                      {t('successCases.belu.challenge')}
+                      {t('successCases.belu.subtitle')}
                     </CardDescription>
                   </div>
                 </div>
@@ -97,7 +97,7 @@ const SuccessCases = () => {
                       {t('successCases.gm.title')}
                     </CardTitle>
                     <CardDescription>
-                      {t('successCases.gm.challenge')}
+                      {t('successCases.gm.subtitle')}
                     </CardDescription>
                   </div>
                 </div>
