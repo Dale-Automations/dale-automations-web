@@ -112,7 +112,12 @@
     }
   },
   "footer": {
-    "phone": "+1 (346) 492-9025 (WhatsApp)"
+    "description": "We transform businesses with artificial intelligence solutions that work 24/7. More efficiency, lower costs, better results.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Information",
+    "phone": "+1 (346) 492-9025 (WhatsApp)",
+    "copyright": "© 2024 Dale Automations. All rights reserved.",
+    "poweredBy": "Powered by Artificial Intelligence"
   },
   "callMe": {
     "title": "Request Call",
