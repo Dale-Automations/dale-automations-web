@@ -81,20 +81,20 @@
     "belu": {
       "title": "Marketing with Belu",
       "challenge": "The Challenge",
-      "challengeText": "Belu needed to automate her digital marketing strategy and generate constant content for multiple platforms, but didn't have the time or resources to maintain an active social media presence.",
+      "challengeText": "Manual client registration process in Kajabi after each purchase",
       "solution": "The Solution",
-      "solutionText": "We implemented our Social Media AI system that completely automates content creation, post scheduling, and comment responses.",
-      "results": "Results",
-      "resultsText": "300% more engagement, 5 weekly hours saved, 150% growth in followers"
+      "solutionText": "Automated system that detects purchases on their website and automatically: Registers the client in Kajabi, Automatically assigns the purchased course, Sends personalized confirmation email",
+      "results": "Result",
+      "resultsText": "100% automation in the client onboarding process"
     },
     "gm": {
       "title": "GM Courses",
-      "challenge": "The Challenge",
-      "challengeText": "An online course platform that received hundreds of daily inquiries about their programs, but their team couldn't respond on time, losing potential students.",
+      "challenge": "The Challenge", 
+      "challengeText": "Manual sales management between Tienda Nube and TiendUp",
       "solution": "The Solution",
-      "solutionText": "We developed Ascend AI, an automated customer service system that answers inquiries 24 hours a day, schedules calls, and automatically qualifies leads.",
-      "results": "Results",
-      "resultsText": "85% of inquiries resolved automatically, 40% more conversions, 24/7 service"
+      "solutionText": "Complete sales flow automation: Automatic monitoring of new purchases, Loads data to Google Sheets, Automatic registration in TiendUp via Browserflow, Automatic course assignment",
+      "results": "Result",
+      "resultsText": "90% reduction in manual management time"
     }
   },
   "contact": {
@@ -110,15 +110,7 @@
     }
   },
   "footer": {
-    "company": "Dale Automations",
-    "description": "We transform businesses with personalized Artificial Intelligence solutions. Automate, optimize and grow with cutting-edge technology.",
-    "quickLinks": "Quick Links",
-    "contactInfo": "Contact Information",
-    "email": "hello@daleautomations.com",
-    "phone": "+1 (346) 492-9025 (WhatsApp)",
-    "locations": "Miami, USA | Buenos Aires, Argentina",
-    "copyright": "© 2024 Dale Automations. All rights reserved.",
-    "poweredBy": "Powered by Artificial Intelligence"
+    "phone": "+1 (346) 492-9025 (WhatsApp)"
   },
   "callMe": {
     "title": "Request Call",

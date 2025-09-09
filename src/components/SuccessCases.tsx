@@ -30,10 +30,10 @@ const SuccessCases = () => {
                   />
                   <div>
                     <CardTitle className="text-xl font-bold text-brand-navy">
-                      Marketing con Belu
+                      {t('successCases.belu.title')}
                     </CardTitle>
                     <CardDescription>
-                      Automatización de ventas e integración con Kajabi
+                      {t('successCases.belu.challenge')}
                     </CardDescription>
                   </div>
                 </div>
@@ -42,18 +42,18 @@ const SuccessCases = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-brand-light/20 p-4 rounded-lg">
-                <h4 className="font-semibold text-brand-navy mb-2">El Desafío:</h4>
+                <h4 className="font-semibold text-brand-navy mb-2">{t('successCases.belu.challenge')}:</h4>
                 <p className="text-sm text-muted-foreground">
-                  Proceso manual de alta de clientes en Kajabi después de cada compra
+                  {t('successCases.belu.challengeText')}
                 </p>
               </div>
               
               <div className="flex items-start space-x-3">
                 <ArrowRight className="h-5 w-5 text-brand-blue mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-brand-navy mb-1">La Solución:</h4>
+                  <h4 className="font-semibold text-brand-navy mb-1">{t('successCases.belu.solution')}:</h4>
                   <p className="text-sm text-muted-foreground">
-                    Sistema automatizado que detecta compras en su página web y automáticamente:
+                    {t('successCases.belu.solutionText')}
                   </p>
                 </div>
               </div>
@@ -74,9 +74,9 @@ const SuccessCases = () => {
               </div>
 
               <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 className="font-semibold text-green-800 mb-1">Resultado:</h4>
+                <h4 className="font-semibold text-green-800 mb-1">{t('successCases.belu.results')}:</h4>
                 <p className="text-sm text-green-700">
-                  100% de automatización en el proceso de onboarding de clientes
+                  {t('successCases.belu.resultsText')}
                 </p>
               </div>
             </CardContent>
@@ -94,10 +94,10 @@ const SuccessCases = () => {
                   />
                   <div>
                     <CardTitle className="text-xl font-bold text-brand-navy">
-                      Cursos GM
+                      {t('successCases.gm.title')}
                     </CardTitle>
                     <CardDescription>
-                      Integración Tienda Nube → TiendUp vía Browserflow
+                      {t('successCases.gm.challenge')}
                     </CardDescription>
                   </div>
                 </div>
@@ -106,18 +106,18 @@ const SuccessCases = () => {
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="bg-brand-light/20 p-4 rounded-lg">
-                <h4 className="font-semibold text-brand-navy mb-2">El Desafío:</h4>
+                <h4 className="font-semibold text-brand-navy mb-2">{t('successCases.gm.challenge')}:</h4>
                 <p className="text-sm text-muted-foreground">
-                  Gestión manual de ventas entre Tienda Nube y TiendUp
+                  {t('successCases.gm.challengeText')}
                 </p>
               </div>
               
               <div className="flex items-start space-x-3">
                 <ArrowRight className="h-5 w-5 text-brand-blue mt-1 flex-shrink-0" />
                 <div>
-                  <h4 className="font-semibold text-brand-navy mb-1">La Solución:</h4>
+                  <h4 className="font-semibold text-brand-navy mb-1">{t('successCases.gm.solution')}:</h4>
                   <p className="text-sm text-muted-foreground">
-                    Automatización completa del flujo de ventas:
+                    {t('successCases.gm.solutionText')}
                   </p>
                 </div>
               </div>
@@ -142,9 +142,9 @@ const SuccessCases = () => {
               </div>
 
               <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 className="font-semibold text-green-800 mb-1">Resultado:</h4>
+                <h4 className="font-semibold text-green-800 mb-1">{t('successCases.gm.results')}:</h4>
                 <p className="text-sm text-green-700">
-                  Reducción del 90% en tiempo de gestión manual
+                  {t('successCases.gm.resultsText')}
                 </p>
               </div>
             </CardContent>
