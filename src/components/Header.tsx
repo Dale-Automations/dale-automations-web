@@ -43,17 +43,15 @@ const Header = () => {
             >
               {t('header.successCases')}
             </button>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button 
-              onClick={() => scrollToSection('contact')}
-              className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-xs sm:text-sm"
-              size="sm"
-            >
-              {t('header.contact')}
-            </Button>
             <LanguageSelector />
           </div>
+          <Button 
+            onClick={() => scrollToSection('contact')}
+            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-xs sm:text-sm mt-2 sm:mt-0"
+            size="sm"
+          >
+            {t('header.contact')}
+          </Button>
         </nav>
       </div>
     </header>

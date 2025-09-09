@@ -15,25 +15,23 @@ const LanguageSelector = () => {
     i18n.changeLanguage(lng);
   };
 
-  const getCurrentLanguageFlag = () => {
-    return i18n.language === 'en' ? '🇺🇸' : '🇪🇸';
+  const getCurrentLanguage = () => {
+    return i18n.language === 'en' ? 'EN' : 'ES';
   };
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="ghost" size="sm" className="h-9 w-9 p-0">
-          <span className="text-lg">{getCurrentLanguageFlag()}</span>
-          <Globe className="h-4 w-4 ml-1" />
+        <Button variant="ghost" size="sm" className="h-8 px-3 text-xs font-medium">
+          {getCurrentLanguage()}
+          <Globe className="h-3 w-3 ml-1" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end">
+      <DropdownMenuContent align="end" className="bg-background border shadow-lg">
         <DropdownMenuItem onClick={() => changeLanguage('es')}>
-          <span className="mr-2">🇪🇸</span>
           Español
         </DropdownMenuItem>
         <DropdownMenuItem onClick={() => changeLanguage('en')}>
-          <span className="mr-2">🇺🇸</span>
           English
         </DropdownMenuItem>
       </DropdownMenuContent>
