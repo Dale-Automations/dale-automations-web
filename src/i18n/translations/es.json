@@ -89,7 +89,10 @@
       "challenge": "El Desafío",
       "challengeText": "Proceso manual de alta de clientes en Kajabi después de cada compra",
       "solution": "La Solución",
-      "solutionText": "Sistema automatizado que detecta compras en su página web y automáticamente: Da de alta el cliente en Kajabi, Asigna automáticamente el curso comprado, Envía email de confirmación personalizado",
+      "solutionText": "Sistema automatizado que detecta compras en su página web y automáticamente:",
+      "feature1": "Da de alta el cliente en Kajabi",
+      "feature2": "Asigna automáticamente el curso comprado",
+      "feature3": "Envía email de confirmación personalizado",
       "results": "Resultado",
       "resultsText": "100% de automatización en el proceso de onboarding de clientes"
     },
@@ -99,7 +102,11 @@
       "challenge": "El Desafío",
       "challengeText": "Gestión manual de ventas entre Tienda Nube y TiendUp",
       "solution": "La Solución",
-      "solutionText": "Automatización completa del flujo de ventas: Monitoreo automático de nuevas compras, Carga datos en Google Sheets, Alta automática en TiendUp vía Browserflow, Asignación automática de cursos",
+      "solutionText": "Automatización completa del flujo de ventas:",
+      "feature1": "Monitoreo automático de nuevas compras",
+      "feature2": "Carga datos en Google Sheets",
+      "feature3": "Alta automática en TiendUp vía Browserflow",
+      "feature4": "Asignación automática de cursos",
       "results": "Resultado",
       "resultsText": "Reducción del 90% en tiempo de gestión manual"
     }

@@ -89,7 +89,10 @@
       "challenge": "The Challenge",
       "challengeText": "Manual client registration process in Kajabi after each purchase",
       "solution": "The Solution",
-      "solutionText": "Automated system that detects purchases on their website and automatically: Registers the client in Kajabi, Automatically assigns the purchased course, Sends personalized confirmation email",
+      "solutionText": "Automated system that detects purchases on their website and automatically:",
+      "feature1": "Registers the client in Kajabi",
+      "feature2": "Automatically assigns the purchased course",
+      "feature3": "Sends personalized confirmation email",
       "results": "Result",
       "resultsText": "100% automation in the client onboarding process"
     },
@@ -99,7 +102,11 @@
       "challenge": "The Challenge", 
       "challengeText": "Manual sales management between Tienda Nube and TiendUp",
       "solution": "The Solution",
-      "solutionText": "Complete sales flow automation: Automatic monitoring of new purchases, Loads data to Google Sheets, Automatic registration in TiendUp via Browserflow, Automatic course assignment",
+      "solutionText": "Complete sales flow automation:",
+      "feature1": "Automatic monitoring of new purchases",
+      "feature2": "Loads data to Google Sheets",
+      "feature3": "Automatic registration in TiendUp via Browserflow",
+      "feature4": "Automatic course assignment",
       "results": "Result",
       "resultsText": "90% reduction in manual management time"
     }

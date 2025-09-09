@@ -61,15 +61,15 @@ const SuccessCases = () => {
               <div className="space-y-2 ml-8">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Da de alta el cliente en Kajabi</span>
+                  <span className="text-sm">{t('successCases.belu.feature1')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Asigna automáticamente el curso comprado</span>
+                  <span className="text-sm">{t('successCases.belu.feature2')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Envía email de confirmación personalizado</span>
+                  <span className="text-sm">{t('successCases.belu.feature3')}</span>
                 </div>
               </div>
 
@@ -125,19 +125,19 @@ const SuccessCases = () => {
               <div className="space-y-2 ml-8">
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Monitoreo automático de nuevas compras</span>
+                  <span className="text-sm">{t('successCases.gm.feature1')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Carga datos en Google Sheets</span>
+                  <span className="text-sm">{t('successCases.gm.feature2')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Alta automática en TiendUp vía Browserflow</span>
+                  <span className="text-sm">{t('successCases.gm.feature3')}</span>
                 </div>
                 <div className="flex items-center space-x-2">
                   <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">Asignación automática de cursos</span>
+                  <span className="text-sm">{t('successCases.gm.feature4')}</span>
                 </div>
               </div>
 
