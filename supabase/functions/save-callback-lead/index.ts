@@ -10,6 +10,7 @@ const corsHeaders = {
 interface CallbackRequest {
   name: string;
   phone: string;
+  language: string;
 }
 
 const handler = async (req: Request): Promise<Response> => {
@@ -19,9 +20,9 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, phone }: CallbackRequest = await req.json();
+    const { name, phone, language }: CallbackRequest = await req.json();
 
-    console.log("Processing callback request:", { name, phone });
+    console.log("Processing callback request:", { name, phone, language });
 
     // Validate input
     if (!name || !phone) {
@@ -46,6 +47,7 @@ const handler = async (req: Request): Promise<Response> => {
       .insert({
         name: name.trim(),
         phone: phone.trim(),
+        language: language || "es",
         status: "pending"
       })
       .select()
@@ -75,6 +77,7 @@ const handler = async (req: Request): Promise<Response> => {
           id: data.id,
           name: data.name,
           phone: data.phone,
+          language: data.language,
           status: data.status,
           created_at: data.created_at
         }),

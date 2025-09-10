@@ -19,6 +19,7 @@ export type Database = {
           called_at: string | null
           created_at: string
           id: string
+          language: string | null
           name: string
           notes: string | null
           phone: string
@@ -29,6 +30,7 @@ export type Database = {
           called_at?: string | null
           created_at?: string
           id?: string
+          language?: string | null
           name: string
           notes?: string | null
           phone: string
@@ -39,6 +41,7 @@ export type Database = {
           called_at?: string | null
           created_at?: string
           id?: string
+          language?: string | null
           name?: string
           notes?: string | null
           phone?: string
