@@ -68,7 +68,7 @@ const handler = async (req: Request): Promise<Response> => {
 
     // Send data to n8n webhook
     try {
-      const webhookResponse = await fetch("https://n8n.daleautomations.com/webhook/Ascend", {
+      const webhookResponse = await fetch("https://daleautomations-01-n8n.rje8vk.easypanel.host/webhook/Ascend", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
