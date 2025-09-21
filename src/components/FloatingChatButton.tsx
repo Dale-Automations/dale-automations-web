@@ -14,24 +14,21 @@ const FloatingChatButton = () => {
     window.open(whatsappUrl, '_blank');
   };
 
-  // Animaciones del robot basadas en el scroll
+  // Animaciones del robot basadas en el scroll - solo movimiento vertical
   const robotTransform = {
-    x: Math.sin(scrollProgress * Math.PI * 4) * 8,
-    y: Math.cos(scrollProgress * Math.PI * 3) * 6,
-    rotate: scrollProgress * 360,
-    scale: 1 + Math.sin(scrollProgress * Math.PI * 6) * 0.1,
+    y: Math.sin(scrollProgress * Math.PI * 4) * 15, // Movimiento vertical suave
   };
   
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-4">
       {/* Robot flotante animado */}
       <div 
         className="transition-transform duration-100 ease-out"
         style={{
-          transform: `translateX(${robotTransform.x}px) translateY(${robotTransform.y}px) rotate(${robotTransform.rotate}deg) scale(${robotTransform.scale})`,
+          transform: `translateY(${robotTransform.y}px)`,
         }}
       >
-        <Bot className="h-8 w-8 text-brand-blue drop-shadow-lg animate-pulse" />
+        <Bot className="h-8 w-8 text-brand-blue drop-shadow-lg" />
       </div>
       
       {/* Botón de WhatsApp */}
