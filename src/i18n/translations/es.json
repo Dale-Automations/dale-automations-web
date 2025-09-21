@@ -118,7 +118,7 @@
       "name": "Nombre completo",
       "phone": "Teléfono",
       "email": "Email",
-      "message": "Mensaje",
+      "message": "Cuéntanos sobre tu proyecto o qué automatización necesitas...",
       "send": "Enviar Mensaje",
       "optional": "opcional"
     }

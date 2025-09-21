@@ -167,7 +167,7 @@ const ContactForm = () => {
 
                 <div className="space-y-2">
                   <Label htmlFor="message" className="text-brand-navy font-medium">
-                    {t('contact.form.message')} <span className="text-muted-foreground">({t('contact.form.optional')})</span>
+                    Mensaje (opcional)
                   </Label>
                   <Textarea
                     id="message"
