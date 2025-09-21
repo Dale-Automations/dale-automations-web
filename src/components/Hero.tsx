@@ -33,15 +33,8 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-20 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-6">
-            <div 
-              className="transition-transform duration-75 ease-out"
-              style={{
-                transform: `translateX(${robotTransform.x}px) translateY(${robotTransform.y}px) rotate(${robotTransform.rotate}deg) scale(${robotTransform.scale})`,
-              }}
-            >
-              <Bot className="h-12 w-12 text-brand-blue mr-4" />
-            </div>
-            <Zap className="h-8 w-8 text-brand-navy animate-pulse ml-2" />
+            <Bot className="h-12 w-12 text-brand-blue mr-4 animate-bounce" />
+            <Zap className="h-8 w-8 text-brand-navy animate-pulse" />
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
