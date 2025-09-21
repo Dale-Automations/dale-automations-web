@@ -157,7 +157,7 @@ const ContactForm = () => {
                       type="email"
                       value={formData.email}
                       onChange={handleInputChange}
-                      placeholder="your@email.com"
+                      placeholder={t('contact.form.email')}
                       className="pl-10 border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                       required
                     />
@@ -174,7 +174,7 @@ const ContactForm = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleInputChange}
-                    placeholder="Tell us about your project or what automation you need..."
+                    placeholder={t('contact.form.message')}
                     className="min-h-[120px] border-brand-blue/30 focus:border-brand-blue focus:ring-brand-blue/20"
                     rows={5}
                   />
