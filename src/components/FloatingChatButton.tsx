@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { MessageSquare } from "lucide-react";
+import { MessageSquare, Bot } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { useScroll } from "@/hooks/use-scroll";
 
 const FloatingChatButton = () => {
   const { t } = useTranslation();
+  const { scrollY, scrollProgress } = useScroll();
   
   const handleWhatsAppClick = () => {
     const phoneNumber = "+5491131501670";
@@ -11,9 +13,28 @@ const FloatingChatButton = () => {
     const whatsappUrl = `https://wa.me/${phoneNumber.replace('+', '')}?text=${message}`;
     window.open(whatsappUrl, '_blank');
   };
+
+  // Animaciones del robot basadas en el scroll
+  const robotTransform = {
+    x: Math.sin(scrollProgress * Math.PI * 4) * 8,
+    y: Math.cos(scrollProgress * Math.PI * 3) * 6,
+    rotate: scrollProgress * 360,
+    scale: 1 + Math.sin(scrollProgress * Math.PI * 6) * 0.1,
+  };
   
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+      {/* Robot flotante animado */}
+      <div 
+        className="transition-transform duration-100 ease-out"
+        style={{
+          transform: `translateX(${robotTransform.x}px) translateY(${robotTransform.y}px) rotate(${robotTransform.rotate}deg) scale(${robotTransform.scale})`,
+        }}
+      >
+        <Bot className="h-8 w-8 text-brand-blue drop-shadow-lg animate-pulse" />
+      </div>
+      
+      {/* Botón de WhatsApp */}
       <Button
         size="lg"
         onClick={handleWhatsAppClick}

@@ -6,7 +6,6 @@ import SuccessCases from "@/components/SuccessCases";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
 import FloatingChatButton from "@/components/FloatingChatButton";
-import FloatingRobot from "@/components/FloatingRobot";
 
 const Index = () => {
   return (
@@ -19,7 +18,6 @@ const Index = () => {
       <ContactForm />
       <Footer />
       <FloatingChatButton />
-      <FloatingRobot />
     </div>
   );
 };
