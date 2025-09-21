@@ -5,6 +5,7 @@ import Benefits from "@/components/Benefits";
 import SuccessCases from "@/components/SuccessCases";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import FloatingChatButton from "@/components/FloatingChatButton";
 
 const Index = () => {
   return (
@@ -16,6 +17,7 @@ const Index = () => {
       <SuccessCases />
       <ContactForm />
       <Footer />
+      <FloatingChatButton />
     </div>
   );
 };
