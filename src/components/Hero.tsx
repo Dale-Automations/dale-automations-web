@@ -2,14 +2,24 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Zap, Bot } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { useScroll } from "@/hooks/use-scroll";
 import CallMeForm from "./CallMeForm";
 
 const Hero = () => {
   const { t } = useTranslation();
+  const { scrollY, scrollProgress } = useScroll();
   
   const scrollToContact = () => {
     const element = document.getElementById('contact');
     element?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  // Calcular transformaciones basadas en el scroll
+  const robotTransform = {
+    x: Math.sin(scrollProgress * Math.PI * 2) * 20, // Movimiento horizontal ondulante
+    y: scrollY * 0.1, // Movimiento vertical suave
+    rotate: scrollProgress * 360, // Rotación completa
+    scale: 1 + Math.sin(scrollProgress * Math.PI) * 0.2, // Escalado dinámico
   };
 
   return (
@@ -23,8 +33,15 @@ const Hero = () => {
       <div className="container mx-auto px-4 py-20 text-center relative z-10">
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center justify-center mb-6">
-            <Bot className="h-12 w-12 text-brand-blue mr-4 animate-bounce" />
-            <Zap className="h-8 w-8 text-brand-navy animate-pulse" />
+            <div 
+              className="transition-transform duration-75 ease-out"
+              style={{
+                transform: `translateX(${robotTransform.x}px) translateY(${robotTransform.y}px) rotate(${robotTransform.rotate}deg) scale(${robotTransform.scale})`,
+              }}
+            >
+              <Bot className="h-12 w-12 text-brand-blue mr-4" />
+            </div>
+            <Zap className="h-8 w-8 text-brand-navy animate-pulse ml-2" />
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
