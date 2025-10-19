@@ -15,6 +15,9 @@ const Footer = () => {
             <p className="text-primary-foreground/80 leading-relaxed">
               {t('footer.description')}
             </p>
+            <p className="text-primary-foreground/60 text-sm leading-relaxed">
+              {t('footer.legalInfo')}
+            </p>
           </div>
 
           {/* Quick Links */}
