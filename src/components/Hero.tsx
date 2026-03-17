@@ -52,14 +52,15 @@ const Hero = () => {
             {i18n.language === 'en' ? 'Building systems in production' : 'Construyendo sistemas en producción'}
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animated-gradient-text leading-tight tracking-tight pb-2">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight pb-2 text-brand-navy">
             {t('hero.titleFixed')}{' '}
             <span
-              className={`inline-block transition-all duration-400 ${
+              className={`animated-gradient-text transition-all duration-400 ${
                 visible
-                  ? 'opacity-100 translate-y-0'
-                  : 'opacity-0 translate-y-2'
+                  ? 'opacity-100 translate-y-0 inline'
+                  : 'opacity-0 translate-y-2 inline'
               }`}
+              style={{ display: 'inline', WebkitBoxDecorationBreak: 'clone' }}
             >
               {word}
             </span>
