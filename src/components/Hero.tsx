@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import DashboardMockup from "./DashboardMockup";
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
@@ -14,19 +15,26 @@ const Hero = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-brand-light/20 relative overflow-hidden">
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-brand-blue/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-brand-navy/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-      </div>
+    <section className="relative overflow-hidden">
+      {/* Dot grid background */}
+      <div className="absolute inset-0 dot-grid opacity-60"></div>
 
-      <div className="container mx-auto px-4 py-20 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent leading-tight">
+      {/* Gradient line accent */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent"></div>
+
+      <div className="container mx-auto px-4 pt-28 pb-16 relative z-10">
+        <div className="max-w-4xl mx-auto text-center mb-12">
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass gradient-border text-sm text-muted-foreground mb-8">
+            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+            {i18n.language === 'en' ? 'Building systems in production' : 'Construyendo sistemas en producción'}
+          </div>
+
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animated-gradient-text leading-tight tracking-tight">
             {t('hero.title')}
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">
             {t('hero.subtitle')}
           </p>
 
@@ -34,7 +42,7 @@ const Hero = () => {
             <Button
               size="lg"
               onClick={handleWhatsApp}
-              className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-lg px-8 py-6 group"
+              className="animated-gradient text-primary-foreground hover:shadow-glow transition-all duration-500 text-lg px-8 py-6 group rounded-xl"
             >
               <MessageCircle className="mr-2 h-5 w-5" />
               {t('hero.cta')}
@@ -45,12 +53,15 @@ const Hero = () => {
               size="lg"
               variant="outline"
               onClick={() => document.getElementById('cases')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border-brand-blue text-brand-navy hover:bg-brand-blue/10 transition-all duration-300 text-lg px-8 py-6"
+              className="glass gradient-border text-brand-navy hover:bg-brand-blue/10 transition-all duration-300 text-lg px-8 py-6 rounded-xl"
             >
               {t('hero.ctaSecondary')}
             </Button>
           </div>
         </div>
+
+        {/* Dashboard mockup */}
+        <DashboardMockup />
       </div>
     </section>
   );
