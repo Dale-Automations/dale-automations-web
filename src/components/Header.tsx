@@ -4,7 +4,7 @@ import LanguageSelector from './LanguageSelector';
 
 const Header = () => {
   const { t } = useTranslation();
-  
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: 'smooth' });
@@ -12,47 +12,58 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 w-full bg-background/90 backdrop-blur-sm border-b border-border z-50 transition-all duration-300">
-      <div className="container mx-auto px-4 py-4 md:py-6">
-        {/* Logo centrado y más grande */}
-        <div className="flex justify-center mb-3 md:mb-4">
-          <img 
-            src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png" 
-            alt="Dale Automations Logo" 
-            className="h-16 md:h-20 w-auto"
+      <div className="container mx-auto px-4 py-3 md:py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <img
+            src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png"
+            alt="Dale Automations Logo"
+            className="h-10 md:h-14 w-auto cursor-pointer"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           />
-        </div>
-        
-        {/* Menú de navegación debajo del logo */}
-        <nav className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 md:gap-8">
-          <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6">
-            <button 
-              onClick={() => scrollToSection('solutions')}
-              className="text-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm font-medium whitespace-nowrap"
+
+          {/* Nav */}
+          <nav className="hidden md:flex items-center gap-6">
+            <button
+              onClick={() => scrollToSection('whatwedo')}
+              className="text-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
             >
-              {t('header.solutions')}
+              {t('header.whatWeDo')}
             </button>
-            <button 
-              onClick={() => scrollToSection('benefits')}
-              className="text-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm font-medium whitespace-nowrap"
-            >
-              {t('header.benefits')}
-            </button>
-            <button 
+            <button
               onClick={() => scrollToSection('cases')}
-              className="text-foreground hover:text-primary transition-colors duration-300 text-xs sm:text-sm font-medium whitespace-nowrap"
+              className="text-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
             >
-              {t('header.successCases')}
+              {t('header.cases')}
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-foreground hover:text-primary transition-colors duration-300 text-sm font-medium"
+            >
+              {t('header.aboutUs')}
             </button>
             <LanguageSelector />
+            <Button
+              onClick={() => scrollToSection('contact')}
+              className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-sm"
+              size="sm"
+            >
+              {t('header.contact')}
+            </Button>
+          </nav>
+
+          {/* Mobile: language + CTA */}
+          <div className="flex md:hidden items-center gap-2">
+            <LanguageSelector />
+            <Button
+              onClick={() => scrollToSection('contact')}
+              className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-xs"
+              size="sm"
+            >
+              {t('header.contact')}
+            </Button>
           </div>
-          <Button 
-            onClick={() => scrollToSection('contact')}
-            className="bg-gradient-primary hover:shadow-glow transition-all duration-300 text-xs sm:text-sm mt-2 sm:mt-0"
-            size="sm"
-          >
-            {t('header.contact')}
-          </Button>
-        </nav>
+        </div>
       </div>
     </header>
   );

@@ -1,152 +1,113 @@
 {
   "header": {
-    "solutions": "Soluciones",
-    "benefits": "Beneficios",
-    "successCases": "Casos de Éxito",
-    "contact": "Contacto"
+    "whatWeDo": "Qué Hacemos",
+    "cases": "Casos Reales",
+    "aboutUs": "Quiénes Somos",
+    "contact": "Hablemos"
   },
   "hero": {
-    "title": "Transforma Tu Negocio Con Inteligencia Artificial",
-    "subtitle": "Automatiza procesos, reduce costos y multiplica tu productividad con nuestras soluciones de IA personalizadas. Desde chatbots inteligentes hasta sistemas de gestión completos.",
-    "talkToAgent": "Hablar con un Agente",
-    "viewSolutions": "Ver Soluciones"
+    "title": "Automatizá y controlá tu negocio desde un solo lugar",
+    "subtitle": "Diseñamos sistemas inteligentes con IA y dashboards en tiempo real para que tomes decisiones con datos, no con intuición.",
+    "cta": "Agendá una llamada",
+    "ctaSecondary": "Ver casos reales"
   },
-  "solutions": {
-    "title": "Nuestras Soluciones",
-    "subtitle": "Potenciamos tu negocio con tecnologías de vanguardia",
-    "preBuilt": {
-      "title": "Soluciones Pre-armadas",
-      "subtitle": "Herramientas de IA listas para implementar en tu negocio"
+  "whatWeDo": {
+    "title": "Qué Hacemos",
+    "subtitle": "Construimos el sistema operativo digital de tu empresa",
+    "systems": {
+      "title": "Sistemas de Gestión a Medida",
+      "description": "Facturación, logística, RRHH, operaciones. Diseñamos plataformas web completas adaptadas a cómo funciona tu negocio."
     },
-    "custom": {
-      "title": "Soluciones a Medida",
-      "subtitle": "Desarrollo Personalizado de IA",
-      "description": "Creamos soluciones únicas adaptadas perfectamente a las necesidades específicas de tu negocio.",
-      "features": {
-        "automation": "Automatización de procesos complejos",
-        "optimization": "Optimización de recursos y tiempo",
-        "reduction": "Reducción de costos operativos"
-      }
+    "dashboards": {
+      "title": "Dashboards en Tiempo Real",
+      "description": "Visualizá tus KPIs, ventas, operaciones y finanzas en un solo lugar. Datos actualizados automáticamente, sin planillas manuales."
     },
-    "ascend": {
-      "title": "Ascend AI",
-      "subtitle": "Sistema Inteligente de Llamadas",
-      "description": "Revoluciona tu atención al cliente y ventas con nuestro sistema de IA conversacional avanzado.",
-      "features": {
-        "natural": "Conversaciones naturales e inteligentes",
-        "integration": "Integración con CRM y sistemas existentes",
-        "analytics": "Análisis y reportes en tiempo real"
-      }
+    "automations": {
+      "title": "Automatizaciones Inteligentes",
+      "description": "Conectamos tus herramientas para que trabajen solas: emisión de facturas, seguimiento de cobranzas, alertas, reportes y más."
     },
-    "social": {
-      "title": "Redes Sociales IA",
-      "subtitle": "Automatización de Contenido",
-      "description": "Automatiza completamente tu presencia en redes sociales con contenido personalizado y estratégico.",
-      "features": {
-        "content": "Creación automática de contenido",
-        "scheduling": "Programación inteligente de publicaciones",
-        "engagement": "Respuestas automáticas y engagement",
-        "analytics": "Análisis y reportes automáticos"
-      }
+    "integrations": {
+      "title": "Integraciones con APIs",
+      "description": "AFIP, Mercado Pago, WhatsApp, Google Drive, LinkedIn y cualquier servicio que tu negocio necesite. Todo conectado."
     }
   },
-  "benefits": {
-    "title": "¿Por qué Automatizar con IA?",
-    "subtitle": "Descubre los beneficios que transformarán tu negocio",
-    "items": {
-      "time": {
-        "title": "Ahorro de Tiempo",
-        "description": "Automatiza tareas repetitivas y libera tiempo para actividades estratégicas"
-      },
-      "cost": {
-        "title": "Reducción de Costos",
-        "description": "Disminuye gastos operativos hasta en un 60% con automatización inteligente"
-      },
-      "scalability": {
-        "title": "Escalabilidad",
-        "description": "Crece sin límites. Nuestras soluciones se adaptan al crecimiento de tu negocio"
-      },
-      "availability": {
-        "title": "Disponibilidad 24/7",
-        "description": "Servicios que nunca duermen. Atención continua para tus clientes"
-      },
-      "response": {
-        "title": "Respuesta Instantánea",
-        "description": "Tiempos de respuesta en segundos, no en horas o días"
-      },
-      "experience": {
-        "title": "Mejor Experiencia",
-        "description": "Clientes más satisfechos con atención personalizada e inmediata"
-      }
+  "cases": {
+    "title": "Casos Reales",
+    "subtitle": "Sistemas que construimos y están funcionando hoy",
+    "factura": {
+      "title": "FacturaInteligente",
+      "tag": "SaaS en producción",
+      "description": "Sistema completo de facturación electrónica AFIP con emisión automática, cobranzas programadas, bot de WhatsApp para facturar por chat y portal web con suscripciones vía Mercado Pago.",
+      "features": ["Emisión automática AFIP", "Bot WhatsApp para facturar", "Cobranzas automáticas", "Portal web + suscripciones"]
+    },
+    "hch": {
+      "title": "HCH Cargo Solutions",
+      "tag": "Trucking USA",
+      "description": "Sistema de gestión de flota para empresa de transporte en Estados Unidos: liquidaciones de viajes, compliance DOT, KPIs operativos, importación de rate cons y sincronización con Google Drive.",
+      "features": ["Liquidaciones automáticas", "Compliance DOT", "Dashboard de KPIs", "Importación de documentos"]
+    },
+    "recruiting": {
+      "title": "Agencia de Recruiting",
+      "tag": "RRHH + IA",
+      "description": "Dashboard de reclutamiento con scoring automático de CVs usando inteligencia artificial, pipeline de candidatos en tiempo real e integración directa con LinkedIn para captación de talento.",
+      "features": ["Scoring de CVs con IA", "Pipeline en tiempo real", "Integración con LinkedIn", "Dashboard de métricas"]
+    },
+    "mymate": {
+      "title": "MyMate Hub",
+      "tag": "AgencyOS",
+      "description": "Sistema operativo para agencia digital: gestión centralizada de clientes, sincronización automática de facturas entre sistemas y dashboard con visibilidad total de la operación.",
+      "features": ["Gestión de clientes", "Sync de facturas entre sistemas", "Dashboard centralizado", "Visibilidad total"]
     }
   },
-  "successCases": {
-    "title": "Casos de Éxito",
-    "subtitle": "Historias reales de transformación digital",
-    "belu": {
-      "title": "Marketing con Belu",
-      "subtitle": "Automatización de ventas e integración con Kajabi",
-      "challenge": "El Desafío",
-      "challengeText": "Proceso manual de alta de clientes en Kajabi después de cada compra",
-      "solution": "La Solución",
-      "solutionText": "Sistema automatizado que detecta compras en su página web y automáticamente:",
-      "feature1": "Da de alta el cliente en Kajabi",
-      "feature2": "Asigna automáticamente el curso comprado",
-      "feature3": "Envía email de confirmación personalizado",
-      "results": "Resultado",
-      "resultsText": "100% de automatización en el proceso de onboarding de clientes"
-    },
-    "gm": {
-      "title": "Cursos GM",
-      "subtitle": "Integración Tienda Nube → TiendUp vía Browserflow",
-      "challenge": "El Desafío",
-      "challengeText": "Gestión manual de ventas entre Tienda Nube y TiendUp",
-      "solution": "La Solución",
-      "solutionText": "Automatización completa del flujo de ventas:",
-      "feature1": "Monitoreo automático de nuevas compras",
-      "feature2": "Carga datos en Google Sheets",
-      "feature3": "Alta automática en TiendUp vía Browserflow",
-      "feature4": "Asignación automática de cursos",
-      "results": "Resultado",
-      "resultsText": "Reducción del 90% en tiempo de gestión manual"
+  "aboutUs": {
+    "title": "Quiénes Somos",
+    "subtitle": "No solo programamos. Entendemos tu negocio.",
+    "bio": "Dale Automations es liderado por Pablo Heckel, Licenciado en Administración de Empresas con un MBA. Esa combinación de formación en negocios y tecnología es lo que nos diferencia: no arrancamos por el código, arrancamos por entender cómo funciona tu operación.",
+    "differentiator": "Primero entendemos tus procesos, identificamos qué se puede automatizar y qué necesita un dashboard. Después diseñamos y construimos. El resultado son sistemas que realmente resuelven problemas, no tecnología por la tecnología.",
+    "process": {
+      "title": "Cómo Trabajamos",
+      "steps": {
+        "understand": {
+          "title": "Entendemos tu operación",
+          "description": "Nos sentamos con vos, mapeamos tus procesos y encontramos dónde hay fricción, pérdida de tiempo o falta de visibilidad."
+        },
+        "design": {
+          "title": "Diseñamos el sistema",
+          "description": "Definimos la arquitectura, las integraciones necesarias y los dashboards que vas a necesitar para tomar decisiones."
+        },
+        "build": {
+          "title": "Lo construimos e integramos",
+          "description": "Desarrollamos tu sistema con tecnología moderna, lo conectamos con tus herramientas existentes y lo dejamos funcionando."
+        },
+        "deliver": {
+          "title": "Te lo entregamos + soporte",
+          "description": "Capacitación, documentación y soporte continuo. Tu sistema evoluciona con tu negocio."
+        }
+      }
     }
   },
   "contact": {
-    "title": "¿Listo para Automatizar?",
-    "subtitle": "Agenda una consulta gratuita y descubre cómo la IA puede transformar tu negocio",
+    "title": "Hablemos",
+    "subtitle": "Contanos qué necesitás y te respondemos en menos de 24 horas",
+    "whatsappBtn": "Escribinos por WhatsApp",
+    "orFillForm": "o dejanos tus datos",
     "form": {
-      "name": "Nombre completo",
-      "phone": "Teléfono",
-      "email": "Email",
-      "message": "Cuéntanos sobre tu proyecto o qué automatización necesitas...",
-      "send": "Enviar Mensaje",
-      "optional": "opcional"
+      "name": "Tu nombre",
+      "whatsapp": "Tu WhatsApp",
+      "send": "Enviar",
+      "sending": "Enviando..."
     }
   },
   "footer": {
-    "description": "Transformamos negocios con soluciones de inteligencia artificial que trabajan 24/7. Más eficiencia, menos costos, mejores resultados.",
+    "description": "Diseñamos sistemas inteligentes con IA y dashboards en tiempo real para empresas que quieren operar mejor.",
     "legalInfo": "Dale Automations es una marca registrada de PH Bookkeeping LLC, empresa legalmente constituida en Texas, EE.UU.",
     "quickLinks": "Enlaces Rápidos",
     "contactInfo": "Contacto",
     "phone": "+54 11 3662-6658 (WhatsApp)",
-    "copyright": "© 2024 Dale Automations (PH Bookkeeping LLC). Todos los derechos reservados.",
-    "poweredBy": "Potenciado por Inteligencia Artificial"
-  },
-  "callMe": {
-    "title": "Solicitar Llamada",
-    "subtitle": "Completa el formulario y te contactamos en menos de 24 horas",
-    "form": {
-      "name": "Nombre completo",
-      "phone": "Teléfono",
-      "language": "Idioma de atención",
-      "selectLanguage": "Selecciona idioma",
-      "submit": "Llamar Ahora",
-      "sending": "Enviando..."
-    },
-    "success": "¡Perfecto! Te contactaremos pronto.",
-    "error": "Error al enviar. Intenta nuevamente."
+    "copyright": "© 2025 Dale Automations (PH Bookkeeping LLC). Todos los derechos reservados.",
+    "poweredBy": "Buenos Aires, Argentina · Houston, TX"
   },
   "floating": {
-    "talkToAgent": "Chatear con un Agente"
+    "talkToAgent": "WhatsApp"
   }
 }

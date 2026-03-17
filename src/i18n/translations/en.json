@@ -1,152 +1,113 @@
 {
   "header": {
-    "solutions": "Solutions",
-    "benefits": "Benefits",
-    "successCases": "Success Cases",
-    "contact": "Contact"
+    "whatWeDo": "What We Do",
+    "cases": "Case Studies",
+    "aboutUs": "About Us",
+    "contact": "Let's Talk"
   },
   "hero": {
-    "title": "Transform Your Business With Artificial Intelligence",
-    "subtitle": "Automate processes, reduce costs and multiply your productivity with our personalized AI solutions. From intelligent chatbots to complete management systems.",
-    "talkToAgent": "Talk to an Agent",
-    "viewSolutions": "View Solutions"
+    "title": "Automate and Control Your Business From One Place",
+    "subtitle": "We design intelligent systems with AI and real-time dashboards so you can make decisions based on data, not gut feeling.",
+    "cta": "Schedule a Call",
+    "ctaSecondary": "See Case Studies"
   },
-  "solutions": {
-    "title": "Our Solutions",
-    "subtitle": "We power your business with cutting-edge technologies",
-    "preBuilt": {
-      "title": "Pre-built Solutions",
-      "subtitle": "Ready-to-implement AI tools for your business"
+  "whatWeDo": {
+    "title": "What We Do",
+    "subtitle": "We build the digital operating system for your company",
+    "systems": {
+      "title": "Custom Management Systems",
+      "description": "Invoicing, logistics, HR, operations. We design complete web platforms tailored to how your business actually works."
     },
-    "custom": {
-      "title": "Custom Solutions",
-      "subtitle": "Personalized AI Development",
-      "description": "We create unique solutions perfectly adapted to your business's specific needs.",
-      "features": {
-        "automation": "Complex process automation",
-        "optimization": "Resource and time optimization",
-        "reduction": "Operational cost reduction"
-      }
+    "dashboards": {
+      "title": "Real-Time Dashboards",
+      "description": "Visualize your KPIs, sales, operations and finances in one place. Automatically updated data, no manual spreadsheets."
     },
-    "ascend": {
-      "title": "Ascend AI",
-      "subtitle": "Intelligent Call System",
-      "description": "Revolutionize your customer service and sales with our advanced conversational AI system.",
-      "features": {
-        "natural": "Natural and intelligent conversations",
-        "integration": "Integration with CRM and existing systems",
-        "analytics": "Real-time analysis and reports"
-      }
+    "automations": {
+      "title": "Intelligent Automations",
+      "description": "We connect your tools so they work on their own: invoice generation, payment follow-ups, alerts, reports and more."
     },
-    "social": {
-      "title": "Social Media AI",
-      "subtitle": "Content Automation",
-      "description": "Completely automate your social media presence with personalized and strategic content.",
-      "features": {
-        "content": "Automatic content creation",
-        "scheduling": "Intelligent post scheduling",
-        "engagement": "Automatic responses and engagement",
-        "analytics": "Automated analytics and reports"
-      }
+    "integrations": {
+      "title": "API Integrations",
+      "description": "Payment gateways, WhatsApp, Google Drive, LinkedIn and any service your business needs. All connected."
     }
   },
-  "benefits": {
-    "title": "Why Automate with AI?",
-    "subtitle": "Discover the benefits that will transform your business",
-    "items": {
-      "time": {
-        "title": "Time Savings",
-        "description": "Automate repetitive tasks and free up time for strategic activities"
-      },
-      "cost": {
-        "title": "Cost Reduction",
-        "description": "Decrease operational expenses by up to 60% with intelligent automation"
-      },
-      "scalability": {
-        "title": "Scalability",
-        "description": "Grow without limits. Our solutions adapt to your business growth"
-      },
-      "availability": {
-        "title": "24/7 Availability",
-        "description": "Services that never sleep. Continuous attention for your customers"
-      },
-      "response": {
-        "title": "Instant Response",
-        "description": "Response times in seconds, not hours or days"
-      },
-      "experience": {
-        "title": "Better Experience",
-        "description": "More satisfied customers with personalized and immediate attention"
-      }
+  "cases": {
+    "title": "Case Studies",
+    "subtitle": "Systems we built that are running in production today",
+    "factura": {
+      "title": "FacturaInteligente",
+      "tag": "SaaS in production",
+      "description": "Complete electronic invoicing system for Argentina's tax authority (AFIP) with automatic issuance, scheduled collections, a WhatsApp bot for invoicing via chat, and a web portal with subscriptions via Mercado Pago.",
+      "features": ["Automatic AFIP invoicing", "WhatsApp invoicing bot", "Automated collections", "Web portal + subscriptions"]
+    },
+    "hch": {
+      "title": "HCH Cargo Solutions",
+      "tag": "US Trucking",
+      "description": "Fleet management system for a US-based trucking company: trip settlements, DOT compliance, operational KPIs, rate con imports, and Google Drive synchronization.",
+      "features": ["Automated settlements", "DOT compliance", "KPI dashboard", "Document imports"]
+    },
+    "recruiting": {
+      "title": "Recruiting Agency",
+      "tag": "HR + AI",
+      "description": "Recruitment dashboard with AI-powered CV scoring, real-time candidate pipeline, and direct LinkedIn integration for talent acquisition.",
+      "features": ["AI-powered CV scoring", "Real-time pipeline", "LinkedIn integration", "Metrics dashboard"]
+    },
+    "mymate": {
+      "title": "MyMate Hub",
+      "tag": "AgencyOS",
+      "description": "Operating system for a digital agency: centralized client management, automatic invoice synchronization between systems, and a dashboard with full operational visibility.",
+      "features": ["Client management", "Cross-system invoice sync", "Centralized dashboard", "Full visibility"]
     }
   },
-  "successCases": {
-    "title": "Success Cases",
-    "subtitle": "Real stories of digital transformation",
-    "belu": {
-      "title": "Marketing with Belu",
-      "subtitle": "Sales automation and Kajabi integration",
-      "challenge": "The Challenge",
-      "challengeText": "Manual client registration process in Kajabi after each purchase",
-      "solution": "The Solution",
-      "solutionText": "Automated system that detects purchases on their website and automatically:",
-      "feature1": "Registers the client in Kajabi",
-      "feature2": "Automatically assigns the purchased course",
-      "feature3": "Sends personalized confirmation email",
-      "results": "Result",
-      "resultsText": "100% automation in the client onboarding process"
-    },
-    "gm": {
-      "title": "GM Courses",
-      "subtitle": "Tienda Nube → TiendUp integration via Browserflow",
-      "challenge": "The Challenge", 
-      "challengeText": "Manual sales management between Tienda Nube and TiendUp",
-      "solution": "The Solution",
-      "solutionText": "Complete sales flow automation:",
-      "feature1": "Automatic monitoring of new purchases",
-      "feature2": "Loads data to Google Sheets",
-      "feature3": "Automatic registration in TiendUp via Browserflow",
-      "feature4": "Automatic course assignment",
-      "results": "Result",
-      "resultsText": "90% reduction in manual management time"
+  "aboutUs": {
+    "title": "About Us",
+    "subtitle": "We don't just code. We understand your business.",
+    "bio": "Dale Automations is led by Pablo Heckel, who holds a Bachelor's degree in Business Administration and an MBA. That combination of business education and technology is what sets us apart: we don't start with the code, we start by understanding how your operation works.",
+    "differentiator": "First we understand your processes, identify what can be automated and what needs a dashboard. Then we design and build. The result: systems that actually solve problems, not technology for technology's sake.",
+    "process": {
+      "title": "How We Work",
+      "steps": {
+        "understand": {
+          "title": "We understand your operation",
+          "description": "We sit down with you, map your processes, and find where there's friction, wasted time, or lack of visibility."
+        },
+        "design": {
+          "title": "We design the system",
+          "description": "We define the architecture, required integrations, and the dashboards you'll need to make decisions."
+        },
+        "build": {
+          "title": "We build and integrate",
+          "description": "We develop your system with modern technology, connect it to your existing tools, and get it running."
+        },
+        "deliver": {
+          "title": "We deliver + support",
+          "description": "Training, documentation, and ongoing support. Your system evolves with your business."
+        }
+      }
     }
   },
   "contact": {
-    "title": "Ready to Automate?",
-    "subtitle": "Schedule a free consultation and discover how AI can transform your business",
+    "title": "Let's Talk",
+    "subtitle": "Tell us what you need and we'll get back to you within 24 hours",
+    "whatsappBtn": "Message Us on WhatsApp",
+    "orFillForm": "or leave your details",
     "form": {
-      "name": "Full name",
-      "phone": "Phone number",
-      "email": "Email",
-      "message": "Message",
-      "send": "Send Message",
-      "optional": "optional"
+      "name": "Your name",
+      "whatsapp": "Your WhatsApp",
+      "send": "Send",
+      "sending": "Sending..."
     }
   },
   "footer": {
-    "description": "We transform businesses with artificial intelligence solutions that work 24/7. More efficiency, lower costs, better results.",
+    "description": "We design intelligent systems with AI and real-time dashboards for companies that want to operate better.",
     "legalInfo": "Dale Automations is a registered trade name under PH Bookkeeping LLC, a legally established company in the state of Texas, USA.",
     "quickLinks": "Quick Links",
-    "contactInfo": "Contact Information",
+    "contactInfo": "Contact",
     "phone": "+1 (346) 492-9025 (WhatsApp)",
-    "copyright": "© 2024 Dale Automations (PH Bookkeeping LLC). All rights reserved.",
-    "poweredBy": "Powered by Artificial Intelligence"
-  },
-  "callMe": {
-    "title": "Request Call",
-    "subtitle": "Fill out the form and we'll contact you within 24 hours",
-    "form": {
-      "name": "Full name",
-      "phone": "Phone",
-      "language": "Service language",
-      "selectLanguage": "Select language",
-      "submit": "Call Now",
-      "sending": "Sending..."
-    },
-    "success": "Perfect! We'll contact you soon.",
-    "error": "Error sending. Please try again."
+    "copyright": "© 2025 Dale Automations (PH Bookkeeping LLC). All rights reserved.",
+    "poweredBy": "Buenos Aires, Argentina · Houston, TX"
   },
   "floating": {
-    "talkToAgent": "Chat with an Agent"
+    "talkToAgent": "WhatsApp"
   }
 }

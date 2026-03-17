@@ -1,154 +1,68 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { CheckCircle, ArrowRight, ShoppingCart, GraduationCap } from "lucide-react";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { CheckCircle, FileText, Truck, Users, LayoutDashboard } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
 const SuccessCases = () => {
   const { t } = useTranslation();
-  
+
+  const cases = [
+    { key: "factura", icon: FileText, color: "text-blue-600", bg: "bg-blue-50" },
+    { key: "hch", icon: Truck, color: "text-orange-600", bg: "bg-orange-50" },
+    { key: "recruiting", icon: Users, color: "text-purple-600", bg: "bg-purple-50" },
+    { key: "mymate", icon: LayoutDashboard, color: "text-emerald-600", bg: "bg-emerald-50" },
+  ];
+
   return (
-    <section id="cases" className="py-20 bg-muted/50">
+    <section id="cases" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-primary bg-clip-text text-transparent">
-            {t('successCases.title')}
+            {t('cases.title')}
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            {t('successCases.subtitle')}
+            {t('cases.subtitle')}
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          {/* Marketing con Belu */}
-          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10">
-            <CardHeader className="pb-4">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                  <img 
-                    src="/lovable-uploads/b98ed61f-1fc7-441c-87a3-0e39829ea95f.png" 
-                    alt="Marketing con Belu" 
-                    className="h-12 w-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <CardTitle className="text-xl font-bold text-brand-navy">
-                      {t('successCases.belu.title')}
-                    </CardTitle>
-                    <CardDescription>
-                      {t('successCases.belu.subtitle')}
-                    </CardDescription>
+          {cases.map((c, index) => {
+            const features = t(`cases.${c.key}.features`, { returnObjects: true }) as string[];
+            return (
+              <Card
+                key={index}
+                className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/5"
+              >
+                <CardHeader className="pb-3">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center gap-3">
+                      <div className={`p-2.5 ${c.bg} rounded-xl`}>
+                        <c.icon className={`h-6 w-6 ${c.color}`} />
+                      </div>
+                      <CardTitle className="text-xl font-bold text-brand-navy">
+                        {t(`cases.${c.key}.title`)}
+                      </CardTitle>
+                    </div>
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${c.bg} ${c.color}`}>
+                      {t(`cases.${c.key}.tag`)}
+                    </span>
                   </div>
-                </div>
-                <GraduationCap className="h-8 w-8 text-brand-blue" />
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-brand-light/20 p-4 rounded-lg">
-                <h4 className="font-semibold text-brand-navy mb-2">{t('successCases.belu.challenge')}:</h4>
-                <p className="text-sm text-muted-foreground">
-                  {t('successCases.belu.challengeText')}
-                </p>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <ArrowRight className="h-5 w-5 text-brand-blue mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-brand-navy mb-1">{t('successCases.belu.solution')}:</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {t('successCases.belu.solutionText')}
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <p className="text-muted-foreground leading-relaxed">
+                    {t(`cases.${c.key}.description`)}
                   </p>
-                </div>
-              </div>
-              
-              <div className="space-y-2 ml-8">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.belu.feature1')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.belu.feature2')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.belu.feature3')}</span>
-                </div>
-              </div>
-
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 className="font-semibold text-green-800 mb-1">{t('successCases.belu.results')}:</h4>
-                <p className="text-sm text-green-700">
-                  {t('successCases.belu.resultsText')}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Cursos GM */}
-          <Card className="group hover:shadow-elegant transition-all duration-500 border-brand-blue/20 hover:border-brand-blue/40 bg-gradient-to-br from-card to-brand-light/10">
-            <CardHeader className="pb-4">
-              <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center space-x-3">
-                  <img 
-                    src="/lovable-uploads/a8579d7f-435d-4bd2-8bbc-edcb8a80eeab.png" 
-                    alt="GM Cursos Academia de Belleza" 
-                    className="h-12 w-12 rounded-full object-cover"
-                  />
-                  <div>
-                    <CardTitle className="text-xl font-bold text-brand-navy">
-                      {t('successCases.gm.title')}
-                    </CardTitle>
-                    <CardDescription>
-                      {t('successCases.gm.subtitle')}
-                    </CardDescription>
+                  <div className="grid grid-cols-2 gap-2">
+                    {Array.isArray(features) && features.map((feature, i) => (
+                      <div key={i} className="flex items-center gap-2">
+                        <CheckCircle className="h-4 w-4 text-green-500 flex-shrink-0" />
+                        <span className="text-sm text-foreground">{feature}</span>
+                      </div>
+                    ))}
                   </div>
-                </div>
-                <ShoppingCart className="h-8 w-8 text-brand-blue" />
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="bg-brand-light/20 p-4 rounded-lg">
-                <h4 className="font-semibold text-brand-navy mb-2">{t('successCases.gm.challenge')}:</h4>
-                <p className="text-sm text-muted-foreground">
-                  {t('successCases.gm.challengeText')}
-                </p>
-              </div>
-              
-              <div className="flex items-start space-x-3">
-                <ArrowRight className="h-5 w-5 text-brand-blue mt-1 flex-shrink-0" />
-                <div>
-                  <h4 className="font-semibold text-brand-navy mb-1">{t('successCases.gm.solution')}:</h4>
-                  <p className="text-sm text-muted-foreground">
-                    {t('successCases.gm.solutionText')}
-                  </p>
-                </div>
-              </div>
-              
-              <div className="space-y-2 ml-8">
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.gm.feature1')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.gm.feature2')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.gm.feature3')}</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <CheckCircle className="h-4 w-4 text-green-500" />
-                  <span className="text-sm">{t('successCases.gm.feature4')}</span>
-                </div>
-              </div>
-
-              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-                <h4 className="font-semibold text-green-800 mb-1">{t('successCases.gm.results')}:</h4>
-                <p className="text-sm text-green-700">
-                  {t('successCases.gm.resultsText')}
-                </p>
-              </div>
-            </CardContent>
-          </Card>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
