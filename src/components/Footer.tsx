@@ -15,11 +15,18 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-8">
           {/* Description */}
           <div className="space-y-4">
-            <img
-              src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png"
-              alt="Dale Automations Logo"
-              className="h-9 w-auto brightness-0 invert opacity-80"
-            />
+            <div className="flex items-center gap-2">
+              <img
+                src="/lovable-uploads/05e1f05d-8d17-4b8c-ab80-62fb932ad3b6.png"
+                alt="Dale Automations"
+                className="h-9 w-auto"
+                style={{ mixBlendMode: "lighten" }}
+              />
+              <div className="leading-none">
+                <span className="text-lg font-bold text-primary-foreground/90 tracking-tight block">DALE</span>
+                <span className="text-[10px] font-semibold text-primary-foreground/60 tracking-[0.2em] block">AUTOMATIONS</span>
+              </div>
+            </div>
             <p className="text-primary-foreground/70 leading-relaxed text-sm">
               {t('footer.description')}
             </p>
