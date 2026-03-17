@@ -5,6 +5,8 @@ import './i18n';
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FloatingChatButton from "@/components/FloatingChatButton";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollProgress from "@/components/ScrollProgress";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -13,6 +15,8 @@ const App = () => (
   <TooltipProvider>
     <Toaster />
     <Sonner />
+    <CustomCursor />
+    <ScrollProgress />
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />

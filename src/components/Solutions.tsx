@@ -1,6 +1,12 @@
 import { Monitor, BarChart3, Workflow, Plug } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useInView } from "@/hooks/use-in-view";
+import { useTilt } from "@/hooks/use-tilt";
+
+const TiltCard = ({ children, className }: { children: React.ReactNode; className: string }) => {
+  const ref = useTilt<HTMLDivElement>(6);
+  return <div ref={ref} className={className}>{children}</div>;
+};
 
 const Solutions = () => {
   const { t } = useTranslation();
@@ -29,12 +35,12 @@ const Solutions = () => {
 
         <div
           ref={ref}
-          className={`grid md:grid-cols-2 gap-6 max-w-5xl mx-auto stagger ${isInView ? 'in-view' : ''}`}
+          className={`grid md:grid-cols-2 gap-6 max-w-5xl mx-auto stagger-lr ${isInView ? 'in-view' : ''}`}
         >
           {services.map((service, index) => (
-            <div
+            <TiltCard
               key={index}
-              className="group glass gradient-border rounded-2xl p-6 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 glow-hover"
+              className="tilt-card group glass gradient-border rounded-2xl p-6 hover:shadow-elegant transition-all duration-500 glow-hover"
             >
               <div className="flex items-start gap-4">
                 <div className={`p-3 ${service.bg} rounded-xl shrink-0 group-hover:scale-110 transition-transform duration-300`}>
@@ -49,7 +55,7 @@ const Solutions = () => {
                   </p>
                 </div>
               </div>
-            </div>
+            </TiltCard>
           ))}
         </div>
       </div>

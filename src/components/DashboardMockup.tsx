@@ -1,6 +1,6 @@
 import { TrendingUp, Users, FileText, Truck, ArrowUpRight, ArrowDownRight } from "lucide-react";
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // Animated counter hook
 function useCounter(target: number, duration: number = 2000, start: boolean = true) {
@@ -11,7 +11,7 @@ function useCounter(target: number, duration: number = 2000, start: boolean = tr
     const startTime = performance.now();
     const animate = (now: number) => {
       const progress = Math.min((now - startTime) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
       setValue(Math.floor(eased * target));
       if (progress < 1) frame = requestAnimationFrame(animate);
     };
@@ -21,17 +21,41 @@ function useCounter(target: number, duration: number = 2000, start: boolean = tr
   return value;
 }
 
-// Mini sparkline SVG
-const Sparkline = ({ data, color }: { data: number[]; color: string }) => {
+// Mini sparkline SVG with draw animation
+const Sparkline = ({ data, color, animate }: { data: number[]; color: string; animate: boolean }) => {
   const max = Math.max(...data);
   const min = Math.min(...data);
   const range = max - min || 1;
   const w = 80;
   const h = 28;
   const points = data.map((v, i) => `${(i / (data.length - 1)) * w},${h - ((v - min) / range) * h}`).join(" ");
+
+  // Calculate path length for draw animation
+  const pathRef = useRef<SVGPolylineElement>(null);
+  const [pathLength, setPathLength] = useState(200);
+
+  useEffect(() => {
+    if (pathRef.current) {
+      setPathLength(pathRef.current.getTotalLength());
+    }
+  }, []);
+
   return (
     <svg width={w} height={h} className="shrink-0">
-      <polyline fill="none" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" points={points} />
+      <polyline
+        ref={pathRef}
+        fill="none"
+        stroke={color}
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        points={points}
+        style={{
+          strokeDasharray: pathLength,
+          strokeDashoffset: animate ? 0 : pathLength,
+          transition: "stroke-dashoffset 1.5s ease-out",
+        }}
+      />
     </svg>
   );
 };
@@ -40,6 +64,7 @@ const DashboardMockup = () => {
   const { i18n } = useTranslation();
   const en = i18n.language === 'en';
   const [visible, setVisible] = useState(false);
+  const [hoveredBar, setHoveredBar] = useState<number | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 400);
@@ -50,6 +75,9 @@ const DashboardMockup = () => {
   const clients = useCounter(47, 1800, visible);
   const invoices = useCounter(1283, 2000, visible);
   const trips = useCounter(156, 1600, visible);
+
+  const barValues = [35, 42, 38, 55, 48, 62, 58, 72, 68, 78, 74, 84];
+  const months = ["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
 
   const kpis = [
     {
@@ -98,19 +126,18 @@ const DashboardMockup = () => {
     },
   ];
 
-  // Fake table rows
   const rows = en
     ? [
-        { name: "FacturaInteligente", status: "Active", metric: "342 inv/mo" },
-        { name: "HCH Cargo", status: "Active", metric: "48 trips/mo" },
-        { name: "Recruiting Agency", status: "Active", metric: "89 CVs/wk" },
-        { name: "MyMate Hub", status: "Active", metric: "12 clients" },
+        { name: "FacturaInteligente", status: "Active", metric: "342 inv/mo", health: 95 },
+        { name: "HCH Cargo", status: "Active", metric: "48 trips/mo", health: 87 },
+        { name: "Recruiting Agency", status: "Active", metric: "89 CVs/wk", health: 92 },
+        { name: "MyMate Hub", status: "Active", metric: "12 clients", health: 78 },
       ]
     : [
-        { name: "FacturaInteligente", status: "Activo", metric: "342 fact/mes" },
-        { name: "HCH Cargo", status: "Activo", metric: "48 viajes/mes" },
-        { name: "Agencia Recruiting", status: "Activo", metric: "89 CVs/sem" },
-        { name: "MyMate Hub", status: "Activo", metric: "12 clientes" },
+        { name: "FacturaInteligente", status: "Activo", metric: "342 fact/mes", health: 95 },
+        { name: "HCH Cargo", status: "Activo", metric: "48 viajes/mes", health: 87 },
+        { name: "Agencia Recruiting", status: "Activo", metric: "89 CVs/sem", health: 92 },
+        { name: "MyMate Hub", status: "Activo", metric: "12 clientes", health: 78 },
       ];
 
   return (
@@ -124,9 +151,9 @@ const DashboardMockup = () => {
         {/* Title bar */}
         <div className="flex items-center gap-2 px-4 py-2.5 border-b border-border/50 bg-muted/30">
           <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-red-400/70"></div>
-            <div className="w-3 h-3 rounded-full bg-yellow-400/70"></div>
-            <div className="w-3 h-3 rounded-full bg-green-400/70"></div>
+            <div className="w-3 h-3 rounded-full bg-red-400/70 hover:bg-red-500 transition-colors cursor-pointer"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-400/70 hover:bg-yellow-500 transition-colors cursor-pointer"></div>
+            <div className="w-3 h-3 rounded-full bg-green-400/70 hover:bg-green-500 transition-colors cursor-pointer"></div>
           </div>
           <div className="flex-1 text-center">
             <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-md bg-muted/50 text-xs text-muted-foreground">
@@ -142,7 +169,10 @@ const DashboardMockup = () => {
           {/* KPI row */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
             {kpis.map((kpi, i) => (
-              <div key={i} className="rounded-xl border border-border/40 bg-white p-3 space-y-2">
+              <div
+                key={i}
+                className="tilt-card rounded-xl border border-border/40 bg-white p-3 space-y-2 hover:border-brand-blue/30 hover:shadow-md transition-all duration-300 cursor-default"
+              >
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">{kpi.label}</span>
                   <div className={`p-1 ${kpi.bg} rounded-md`}>
@@ -151,7 +181,7 @@ const DashboardMockup = () => {
                 </div>
                 <div className="flex items-end justify-between">
                   <span className="text-xl font-bold text-brand-navy tabular-nums">{kpi.value}</span>
-                  <Sparkline data={kpi.spark} color={kpi.sparkColor} />
+                  <Sparkline data={kpi.spark} color={kpi.sparkColor} animate={visible} />
                 </div>
                 <div className="flex items-center gap-1">
                   {kpi.up ? (
@@ -168,7 +198,7 @@ const DashboardMockup = () => {
             ))}
           </div>
 
-          {/* Bottom row: chart placeholder + table */}
+          {/* Bottom row: chart + table */}
           <div className="grid md:grid-cols-5 gap-3">
             {/* Chart area */}
             <div className="md:col-span-3 rounded-xl border border-border/40 bg-white p-4">
@@ -176,32 +206,78 @@ const DashboardMockup = () => {
                 <span className="text-xs font-semibold text-brand-navy">{en ? "Monthly revenue" : "Facturación mensual"}</span>
                 <span className="text-[10px] text-muted-foreground px-2 py-0.5 rounded bg-muted/50">{en ? "Last 12 months" : "Últimos 12 meses"}</span>
               </div>
-              {/* Bar chart mockup */}
-              <div className="flex items-end gap-1 h-20">
-                {[35, 42, 38, 55, 48, 62, 58, 72, 68, 78, 74, 84].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-t-sm bg-gradient-to-t from-brand-navy/80 to-brand-blue/60 transition-all duration-700"
-                    style={{ height: visible ? `${h}%` : "0%", transitionDelay: `${i * 60}ms` }}
-                  ></div>
+              {/* Interactive bar chart */}
+              <div className="flex items-end gap-1 h-20 relative">
+                {barValues.map((h, i) => (
+                  <div
+                    key={i}
+                    className="flex-1 relative group"
+                    style={{ height: "100%" }}
+                    onMouseEnter={() => setHoveredBar(i)}
+                    onMouseLeave={() => setHoveredBar(null)}
+                  >
+                    <div
+                      className={`absolute bottom-0 w-full rounded-t-sm transition-all duration-700 ${
+                        hoveredBar === i
+                          ? "bg-gradient-to-t from-brand-navy to-brand-blue"
+                          : "bg-gradient-to-t from-brand-navy/80 to-brand-blue/60"
+                      }`}
+                      style={{
+                        height: visible ? `${h}%` : "0%",
+                        transitionDelay: `${i * 60}ms`,
+                        transform: hoveredBar === i ? "scaleY(1.08)" : "scaleY(1)",
+                        transformOrigin: "bottom",
+                      }}
+                    />
+                    {/* Tooltip */}
+                    {hoveredBar === i && (
+                      <div className="absolute -top-7 left-1/2 -translate-x-1/2 px-1.5 py-0.5 rounded bg-brand-navy text-white text-[9px] font-medium whitespace-nowrap z-10">
+                        ${Math.round(h * 3.4)}k
+                      </div>
+                    )}
+                  </div>
                 ))}
               </div>
               <div className="flex justify-between mt-1.5">
-                {["E", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"].map((m, i) => (
-                  <span key={i} className="text-[9px] text-muted-foreground flex-1 text-center">{m}</span>
+                {months.map((m, i) => (
+                  <span
+                    key={i}
+                    className={`text-[9px] flex-1 text-center transition-colors duration-200 ${
+                      hoveredBar === i ? "text-brand-navy font-semibold" : "text-muted-foreground"
+                    }`}
+                  >
+                    {m}
+                  </span>
                 ))}
               </div>
             </div>
 
-            {/* Mini table */}
+            {/* Mini table with health bars */}
             <div className="md:col-span-2 rounded-xl border border-border/40 bg-white p-4">
               <span className="text-xs font-semibold text-brand-navy block mb-3">{en ? "Active systems" : "Sistemas activos"}</span>
               <div className="space-y-2">
                 {rows.map((row, i) => (
-                  <div key={i} className="flex items-center justify-between py-1.5 border-b border-border/30 last:border-0">
-                    <div className="flex items-center gap-2">
-                      <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
-                      <span className="text-xs text-foreground font-medium">{row.name}</span>
+                  <div
+                    key={i}
+                    className="py-1.5 border-b border-border/30 last:border-0 hover:bg-muted/30 rounded-md px-1 -mx-1 transition-colors duration-200 cursor-default"
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-1.5 h-1.5 rounded-full bg-green-500"></div>
+                        <span className="text-xs text-foreground font-medium">{row.name}</span>
+                      </div>
+                      <span className="text-[11px] text-muted-foreground">{row.metric}</span>
                     </div>
-                    <span className="text-[11px] text-muted-foreground">{row.metric}</span>
+                    {/* Health bar */}
+                    <div className="mt-1 h-1 bg-muted/50 rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-brand-blue/60 to-emerald-500/60 transition-all duration-1000"
+                        style={{
+                          width: visible ? `${row.health}%` : "0%",
+                          transitionDelay: `${800 + i * 200}ms`,
+                        }}
+                      />
+                    </div>
                   </div>
                 ))}
               </div>

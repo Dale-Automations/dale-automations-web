@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { useTranslation } from 'react-i18next';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useMousePosition } from "@/hooks/use-mouse-position";
 import DashboardMockup from "./DashboardMockup";
 
 function useRotatingText(words: string[], interval: number = 3000) {
@@ -24,9 +25,20 @@ function useRotatingText(words: string[], interval: number = 3000) {
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
+  const mouse = useMousePosition();
+  const spotlightRef = useRef<HTMLDivElement>(null);
+  const mockupRef = useRef<HTMLDivElement>(null);
 
   const rotatingWords = t('hero.titleRotating', { returnObjects: true }) as string[];
   const { word, visible } = useRotatingText(rotatingWords, 3000);
+
+  // Subtle tilt on the dashboard mockup based on mouse
+  useEffect(() => {
+    if (!mockupRef.current) return;
+    const rotateX = mouse.ny * -3;
+    const rotateY = mouse.nx * 3;
+    mockupRef.current.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  }, [mouse.nx, mouse.ny]);
 
   const handleWhatsApp = () => {
     const phone = i18n.language === 'en' ? '13464929025' : '5491136626658';
@@ -40,6 +52,15 @@ const Hero = () => {
     <section className="relative overflow-hidden">
       {/* Dot grid background */}
       <div className="absolute inset-0 dot-grid opacity-60"></div>
+
+      {/* Mouse-following spotlight */}
+      <div
+        ref={spotlightRef}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: `radial-gradient(600px circle at ${mouse.x}px ${mouse.y}px, hsl(var(--brand-blue) / 0.06), transparent 60%)`,
+        }}
+      />
 
       {/* Gradient line accent */}
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-brand-blue/30 to-transparent"></div>
@@ -92,8 +113,10 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Dashboard mockup */}
-        <DashboardMockup />
+        {/* Dashboard mockup with mouse-driven tilt */}
+        <div ref={mockupRef} className="transition-transform duration-200 ease-out">
+          <DashboardMockup />
+        </div>
       </div>
     </section>
   );

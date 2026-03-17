@@ -1,6 +1,12 @@
 import { CheckCircle, FileText, Truck, Users, LayoutDashboard } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useInView } from "@/hooks/use-in-view";
+import { useTilt } from "@/hooks/use-tilt";
+
+const TiltCard = ({ children, className }: { children: React.ReactNode; className: string }) => {
+  const ref = useTilt<HTMLDivElement>(5);
+  return <div ref={ref} className={className}>{children}</div>;
+};
 
 const SuccessCases = () => {
   const { t } = useTranslation();
@@ -34,9 +40,9 @@ const SuccessCases = () => {
           {cases.map((c, index) => {
             const features = t(`cases.${c.key}.features`, { returnObjects: true }) as string[];
             return (
-              <div
+              <TiltCard
                 key={index}
-                className={`glass gradient-border rounded-2xl p-6 hover:shadow-elegant transition-all duration-500 hover:-translate-y-1 glow-hover ${
+                className={`tilt-card glass gradient-border rounded-2xl p-6 hover:shadow-elegant transition-all duration-500 glow-hover ${
                   index === 0 ? 'md:col-span-2' : ''
                 }`}
               >
@@ -70,7 +76,7 @@ const SuccessCases = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </TiltCard>
             );
           })}
         </div>
