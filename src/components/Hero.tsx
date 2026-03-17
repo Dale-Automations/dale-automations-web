@@ -52,13 +52,10 @@ const Hero = () => {
             {i18n.language === 'en' ? 'Building systems in production' : 'Construyendo sistemas en producción'}
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight pb-2">
-            <span className="animated-gradient-text">
-              {t('hero.titleFixed')}
-            </span>
-            <br />
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animated-gradient-text leading-tight tracking-tight pb-2">
+            {t('hero.titleFixed')}{' '}
             <span
-              className={`inline-block px-4 py-1 mt-1 rounded-xl bg-brand-navy/10 text-brand-navy transition-all duration-400 ${
+              className={`inline-block transition-all duration-400 ${
                 visible
                   ? 'opacity-100 translate-y-0'
                   : 'opacity-0 translate-y-2'
