@@ -6,7 +6,8 @@
     "contact": "Hablemos"
   },
   "hero": {
-    "title": "Automatizá y controlá tu negocio desde un solo lugar",
+    "titleFixed": "Automatizá y controlá tu negocio desde",
+    "titleRotating": ["un solo lugar", "la PC de tu oficina", "tu laptop personal", "tu celular"],
     "subtitle": "Diseñamos sistemas inteligentes con IA y dashboards en tiempo real para que tomes decisiones con datos, no con intuición.",
     "cta": "Agendá una llamada",
     "ctaSecondary": "Ver casos reales"

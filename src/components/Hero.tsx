@@ -1,10 +1,32 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { useEffect, useState } from "react";
 import DashboardMockup from "./DashboardMockup";
+
+function useRotatingText(words: string[], interval: number = 3000) {
+  const [index, setIndex] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setVisible(false);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % words.length);
+        setVisible(true);
+      }, 400);
+    }, interval);
+    return () => clearInterval(timer);
+  }, [words.length, interval]);
+
+  return { word: words[index], visible };
+}
 
 const Hero = () => {
   const { t, i18n } = useTranslation();
+
+  const rotatingWords = t('hero.titleRotating', { returnObjects: true }) as string[];
+  const { word, visible } = useRotatingText(rotatingWords, 3000);
 
   const handleWhatsApp = () => {
     const phone = i18n.language === 'en' ? '13464929025' : '5491136626658';
@@ -30,8 +52,20 @@ const Hero = () => {
             {i18n.language === 'en' ? 'Building systems in production' : 'Construyendo sistemas en producción'}
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animated-gradient-text leading-tight tracking-tight">
-            {t('hero.title')}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight tracking-tight pb-2">
+            <span className="animated-gradient-text">
+              {t('hero.titleFixed')}
+            </span>
+            <br />
+            <span
+              className={`inline-block px-4 py-1 mt-1 rounded-xl bg-brand-navy/10 text-brand-navy transition-all duration-400 ${
+                visible
+                  ? 'opacity-100 translate-y-0'
+                  : 'opacity-0 translate-y-2'
+              }`}
+            >
+              {word}
+            </span>
           </h1>
 
           <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-2xl mx-auto leading-relaxed">

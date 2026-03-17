@@ -6,7 +6,8 @@
     "contact": "Let's Talk"
   },
   "hero": {
-    "title": "Automate and Control Your Business From One Place",
+    "titleFixed": "Automate and Control Your Business From",
+    "titleRotating": ["One Place", "Your Office PC", "Your Laptop", "Your Phone"],
     "subtitle": "We design intelligent systems with AI and real-time dashboards so you can make decisions based on data, not gut feeling.",
     "cta": "Schedule a Call",
     "ctaSecondary": "See Case Studies"
