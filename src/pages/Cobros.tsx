@@ -180,13 +180,12 @@ const SECCIONES: Seccion[] = [
     preguntas: [
       {
         id: "evolutivo",
-        label:
-          "¿Qué mejoras o features nuevas imaginan en los próximos 6 a 12 meses? Esto lo cotizamos aparte del mantenimiento, pero nos sirve para dimensionar.",
+        label: "¿Qué mejoras o features nuevas imaginan en los próximos 6 a 12 meses?",
       },
       {
         id: "facturacion",
         label:
-          "¿Quién factura y a quién en este acuerdo? ¿Prefieren un fee fijo mensual, o un esquema de horas con bolsa y excedente?",
+          "¿Prefieren un fee fijo mensual, o un esquema de horas con bolsa y excedente?",
       },
     ],
   },
