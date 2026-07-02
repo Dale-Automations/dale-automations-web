@@ -8,6 +8,7 @@ import FloatingChatButton from "@/components/FloatingChatButton";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
 import Index from "./pages/Index";
+import Cobros from "./pages/Cobros";
 import NotFound from "./pages/NotFound";
 
 
@@ -20,6 +21,7 @@ const App = () => (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Index />} />
+        <Route path="/cobros" element={<Cobros />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
