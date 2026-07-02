@@ -1,7 +1,5 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -10,7 +8,6 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { toast } from "sonner";
 import {
   Activity,
   BarChart3,
@@ -19,16 +16,20 @@ import {
   RefreshCw,
   ShieldCheck,
   Rocket,
-  Send,
   Loader2,
-  CheckCircle2,
+  Check,
+  Cloud,
   ClipboardList,
+  AlertTriangle,
 } from "lucide-react";
 import Footer from "@/components/Footer";
 
-const WEBHOOK_URL = "https://n8n.daleautomations.com/webhook/cobros-uom";
+const API_GET = "https://n8n.daleautomations.com/webhook/cobros-uom-data";
+const API_SAVE = "https://n8n.daleautomations.com/webhook/cobros-uom-save";
+const POLL_MS = 20000;
+const DEBOUNCE_MS = 1000;
 
-type Pregunta = { id: string; label: string; placeholder?: string };
+type Pregunta = { id: string; label: string };
 type Seccion = { id: string; titulo: string; icon: React.ReactNode; preguntas: Pregunta[] };
 
 const SECCIONES: Seccion[] = [
@@ -191,65 +192,151 @@ const SECCIONES: Seccion[] = [
   },
 ];
 
+type Estado = "cargando" | "ok" | "guardando" | "guardado" | "error";
+
 const Cobros = () => {
-  const [nombre, setNombre] = useState("");
-  const [empresa, setEmpresa] = useState("");
-  const [email, setEmail] = useState("");
-  const [telefono, setTelefono] = useState("");
   const [answers, setAnswers] = useState<Record<string, string>>({});
-  const [submitting, setSubmitting] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
+  const [loaded, setLoaded] = useState(false);
+  const [estado, setEstado] = useState<Estado>("cargando");
+  const [ultima, setUltima] = useState<string | null>(null);
 
-  const setAnswer = (id: string, value: string) =>
-    setAnswers((prev) => ({ ...prev, [id]: value }));
+  const dirty = useRef<Record<string, string>>({});
+  const focusedId = useRef<string | null>(null);
+  const saveTimer = useRef<number | null>(null);
+  const saving = useRef(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!nombre.trim() || !email.trim()) {
-      toast.error("Por favor completá tu nombre y tu email para poder responderte.");
-      return;
-    }
+  const marcarUltima = () => {
+    const ahora = new Date().toLocaleTimeString("es-AR", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    setUltima(ahora);
+  };
 
-    const respuestas = SECCIONES.flatMap((s) =>
-      s.preguntas.map((p) => ({
-        id: p.id,
-        pregunta: p.label,
-        respuesta: (answers[p.id] || "").trim(),
-      }))
-    );
-
-    const payload = {
-      nombre: nombre.trim(),
-      empresa: empresa.trim(),
-      email: email.trim(),
-      telefono: telefono.trim(),
-      respuestas,
-    };
-
-    setSubmitting(true);
+  const traer = async (esInicial: boolean) => {
     try {
-      const res = await fetch(WEBHOOK_URL, {
+      const res = await fetch(API_GET, { cache: "no-store" });
+      if (!res.ok) throw new Error("bad status");
+      const json = await res.json();
+      const data = (json && json.data) || {};
+      setAnswers((prev) => {
+        const next = { ...prev };
+        Object.keys(data).forEach((k) => {
+          if (esInicial) {
+            next[k] = data[k];
+          } else if (k !== focusedId.current && !(k in dirty.current)) {
+            next[k] = data[k];
+          }
+        });
+        return next;
+      });
+      if (esInicial) {
+        setLoaded(true);
+        setEstado("ok");
+      }
+      marcarUltima();
+    } catch (e) {
+      if (esInicial) {
+        setLoaded(true);
+        setEstado("error");
+      }
+    }
+  };
+
+  const guardar = async () => {
+    if (saving.current) return;
+    const pend = dirty.current;
+    const keys = Object.keys(pend);
+    if (keys.length === 0) return;
+
+    dirty.current = {};
+    saving.current = true;
+    setEstado("guardando");
+    const updates: Record<string, string> = {};
+    keys.forEach((k) => (updates[k] = pend[k]));
+
+    try {
+      const res = await fetch(API_SAVE, {
         method: "POST",
         headers: { "Content-Type": "text/plain;charset=UTF-8" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ updates }),
       });
       if (!res.ok) throw new Error("bad status");
-      setSubmitted(true);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } catch (err) {
-      toast.error(
-        "No pudimos enviar el formulario. Probá de nuevo, o escribinos por WhatsApp al +54 9 11 3662 6658."
-      );
+      setEstado("guardado");
+      marcarUltima();
+    } catch (e) {
+      // Reintentar: devolver los cambios a la cola
+      keys.forEach((k) => {
+        if (!(k in dirty.current)) dirty.current[k] = updates[k];
+      });
+      setEstado("error");
     } finally {
-      setSubmitting(false);
+      saving.current = false;
+      if (Object.keys(dirty.current).length > 0) {
+        programarGuardado();
+      }
     }
+  };
+
+  const programarGuardado = () => {
+    if (saveTimer.current) window.clearTimeout(saveTimer.current);
+    saveTimer.current = window.setTimeout(guardar, DEBOUNCE_MS);
+  };
+
+  const onChange = (id: string, value: string) => {
+    setAnswers((prev) => ({ ...prev, [id]: value }));
+    dirty.current[id] = value;
+    programarGuardado();
+  };
+
+  useEffect(() => {
+    traer(true);
+    const poll = window.setInterval(() => traer(false), POLL_MS);
+    const flush = () => {
+      if (Object.keys(dirty.current).length > 0) guardar();
+    };
+    window.addEventListener("beforeunload", flush);
+    return () => {
+      window.clearInterval(poll);
+      window.removeEventListener("beforeunload", flush);
+      if (saveTimer.current) window.clearTimeout(saveTimer.current);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const StatusPill = () => {
+    const base =
+      "inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-sm font-medium";
+    if (estado === "guardando")
+      return (
+        <span className={`${base} bg-brand-blue/10 text-brand-navy`}>
+          <Loader2 className="h-4 w-4 animate-spin" /> Guardando
+        </span>
+      );
+    if (estado === "error")
+      return (
+        <span className={`${base} bg-amber-500/10 text-amber-600`}>
+          <AlertTriangle className="h-4 w-4" /> Sin conexión, reintentando
+        </span>
+      );
+    if (estado === "cargando")
+      return (
+        <span className={`${base} bg-muted text-muted-foreground`}>
+          <Loader2 className="h-4 w-4 animate-spin" /> Cargando
+        </span>
+      );
+    return (
+      <span className={`${base} bg-brand-blue/10 text-brand-navy`}>
+        <Check className="h-4 w-4" /> Guardado{ultima ? ` · ${ultima}` : ""}
+      </span>
+    );
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Barra superior simple */}
-      <header className="w-full border-b border-brand-blue/10 glass-strong">
-        <div className="container mx-auto px-4 py-3">
+      {/* Barra superior */}
+      <header className="w-full border-b border-brand-blue/10 glass-strong sticky top-0 z-40">
+        <div className="container mx-auto px-4 py-3 flex items-center justify-between gap-3">
           <Link to="/" aria-label="Ir al inicio">
             <img
               src="/lovable-uploads/926ffbee-3111-4061-8a88-9f82f6821269.png"
@@ -257,6 +344,7 @@ const Cobros = () => {
               className="h-9 md:h-11 w-auto"
             />
           </Link>
+          <StatusPill />
         </div>
       </header>
 
@@ -265,153 +353,89 @@ const Cobros = () => {
         <div className="absolute bottom-24 -left-24 w-64 h-64 bg-brand-navy/5 orb orb-2" />
 
         <div className="container mx-auto px-4 py-12 md:py-16 relative z-10 max-w-3xl">
-          {submitted ? (
-            <div className="glass gradient-border rounded-2xl p-8 md:p-12 text-center space-y-5">
-              <CheckCircle2 className="h-14 w-14 text-brand-blue mx-auto" />
-              <h1 className="text-3xl md:text-4xl font-bold animated-gradient-text tracking-tight">
-                Recibimos tus respuestas
-              </h1>
-              <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-                Gracias, {nombre.split(" ")[0] || "gracias"}. Con esto armamos la cotización del
-                mantenimiento y te la acercamos. Si nos quedó alguna duda, te escribimos.
-              </p>
-              <Link to="/">
-                <Button className="animated-gradient text-primary-foreground rounded-xl mt-2">
-                  Volver al inicio
-                </Button>
-              </Link>
+          <div className="text-center mb-8">
+            <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-wider text-muted-foreground mb-5">
+              <ClipboardList className="h-4 w-4" />
+              Relevamiento para el mantenimiento
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 animated-gradient-text tracking-tight">
+              Sistema de Cobros UOM
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Para cotizar el mantenimiento con precisión, necesitamos entender bien cómo está el
+              sistema hoy. Cuanta más info nos den, mejor. Respondan lo que puedan; lo que no sepan
+              o no aplique, déjenlo en blanco.
+            </p>
+          </div>
+
+          <div className="glass rounded-2xl p-4 md:p-5 mb-8 flex items-start gap-3">
+            <Cloud className="h-5 w-5 text-brand-blue mt-0.5 shrink-0" />
+            <p className="text-sm text-muted-foreground text-left">
+              Se guarda solo, a medida que escriben. Pueden completarlo entre varios y en distintos
+              momentos: al abrir este link siempre ven lo último cargado, así uno empieza y otro
+              continúa.
+            </p>
+          </div>
+
+          {!loaded ? (
+            <div className="glass gradient-border rounded-2xl p-12 text-center">
+              <Loader2 className="h-8 w-8 animate-spin text-brand-blue mx-auto" />
+              <p className="text-muted-foreground mt-4">Cargando lo que ya respondieron</p>
             </div>
           ) : (
-            <>
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 rounded-full glass px-4 py-1.5 text-xs uppercase tracking-wider text-muted-foreground mb-5">
-                  <ClipboardList className="h-4 w-4" />
-                  Relevamiento para el mantenimiento
-                </div>
-                <h1 className="text-4xl md:text-5xl font-bold mb-4 animated-gradient-text tracking-tight">
-                  Sistema de Cobros UOM
-                </h1>
-                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Para cotizar el mantenimiento con precisión, necesitamos entender bien cómo está
-                  el sistema hoy. Respondé lo que puedas; lo que no sepas o no aplique, dejalo en
-                  blanco. No hace falta completarlo todo de una.
-                </p>
-              </div>
-
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Datos de contacto */}
-                <div className="glass gradient-border rounded-2xl p-6 md:p-8 space-y-4">
-                  <h2 className="text-xl font-semibold text-foreground">Tus datos</h2>
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div className="space-y-1.5">
-                      <Label htmlFor="nombre">Nombre y apellido *</Label>
-                      <Input
-                        id="nombre"
-                        value={nombre}
-                        onChange={(e) => setNombre(e.target.value)}
-                        className="bg-muted/30 rounded-xl"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="empresa">Empresa u organización</Label>
-                      <Input
-                        id="empresa"
-                        value={empresa}
-                        onChange={(e) => setEmpresa(e.target.value)}
-                        className="bg-muted/30 rounded-xl"
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="email">Email *</Label>
-                      <Input
-                        id="email"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        className="bg-muted/30 rounded-xl"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-1.5">
-                      <Label htmlFor="telefono">Teléfono o WhatsApp</Label>
-                      <Input
-                        id="telefono"
-                        type="tel"
-                        value={telefono}
-                        onChange={(e) => setTelefono(e.target.value)}
-                        className="bg-muted/30 rounded-xl"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Secciones de preguntas */}
-                <Accordion
-                  type="multiple"
-                  defaultValue={SECCIONES.map((s) => s.id)}
-                  className="space-y-4"
+            <Accordion
+              type="multiple"
+              defaultValue={SECCIONES.map((s) => s.id)}
+              className="space-y-4"
+            >
+              {SECCIONES.map((seccion) => (
+                <AccordionItem
+                  key={seccion.id}
+                  value={seccion.id}
+                  className="glass gradient-border rounded-2xl px-6 border-none"
                 >
-                  {SECCIONES.map((seccion) => (
-                    <AccordionItem
-                      key={seccion.id}
-                      value={seccion.id}
-                      className="glass gradient-border rounded-2xl px-6 border-none"
-                    >
-                      <AccordionTrigger className="hover:no-underline py-5">
-                        <span className="flex items-center gap-3 text-left">
-                          <span className="text-brand-blue">{seccion.icon}</span>
-                          <span className="text-lg font-semibold">{seccion.titulo}</span>
-                        </span>
-                      </AccordionTrigger>
-                      <AccordionContent className="pb-6 space-y-5">
-                        {seccion.preguntas.map((p) => (
-                          <div key={p.id} className="space-y-2">
-                            <Label htmlFor={p.id} className="text-sm font-normal leading-relaxed text-foreground/90">
-                              {p.label}
-                            </Label>
-                            <Textarea
-                              id={p.id}
-                              value={answers[p.id] || ""}
-                              onChange={(e) => setAnswer(p.id, e.target.value)}
-                              placeholder="Tu respuesta"
-                              rows={3}
-                              className="bg-muted/30 rounded-xl resize-y"
-                            />
-                          </div>
-                        ))}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-
-                <div className="glass gradient-border rounded-2xl p-6 md:p-8 space-y-4 text-center">
-                  <p className="text-sm text-muted-foreground">
-                    Al enviar, nos llegan tus respuestas y te preparamos la cotización. Los campos
-                    con * son los únicos obligatorios.
-                  </p>
-                  <Button
-                    type="submit"
-                    size="lg"
-                    disabled={submitting}
-                    className="w-full md:w-auto animated-gradient text-primary-foreground hover:shadow-glow transition-all duration-500 text-lg py-6 px-10 group rounded-xl"
-                  >
-                    {submitting ? (
-                      <>
-                        <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                        Enviando
-                      </>
-                    ) : (
-                      <>
-                        Enviar respuestas
-                        <Send className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                      </>
-                    )}
-                  </Button>
-                </div>
-              </form>
-            </>
+                  <AccordionTrigger className="hover:no-underline py-5">
+                    <span className="flex items-center gap-3 text-left">
+                      <span className="text-brand-blue">{seccion.icon}</span>
+                      <span className="text-lg font-semibold">{seccion.titulo}</span>
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 space-y-5">
+                    {seccion.preguntas.map((p) => (
+                      <div key={p.id} className="space-y-2">
+                        <Label
+                          htmlFor={p.id}
+                          className="text-sm font-normal leading-relaxed text-foreground/90"
+                        >
+                          {p.label}
+                        </Label>
+                        <Textarea
+                          id={p.id}
+                          value={answers[p.id] || ""}
+                          onChange={(e) => onChange(p.id, e.target.value)}
+                          onFocus={() => (focusedId.current = p.id)}
+                          onBlur={() => {
+                            focusedId.current = null;
+                            if (Object.keys(dirty.current).length > 0) guardar();
+                          }}
+                          placeholder="Escriban acá"
+                          rows={3}
+                          className="bg-muted/30 rounded-xl resize-y"
+                        />
+                      </div>
+                    ))}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
           )}
+
+          <div className="text-center mt-8">
+            <StatusPill />
+            <p className="text-xs text-muted-foreground mt-3">
+              No hace falta enviar nada: todo lo que escriben queda guardado automáticamente.
+            </p>
+          </div>
         </div>
       </main>
 
