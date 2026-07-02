@@ -382,6 +382,7 @@ const Cobros = () => {
               <p className="text-muted-foreground mt-4">Cargando lo que ya respondieron</p>
             </div>
           ) : (
+            <>
             <Accordion
               type="multiple"
               defaultValue={SECCIONES.map((s) => s.id)}
@@ -427,6 +428,31 @@ const Cobros = () => {
                 </AccordionItem>
               ))}
             </Accordion>
+
+            <div className="glass gradient-border rounded-2xl p-6 md:p-8 mt-4 space-y-3">
+              <Label htmlFor="comentarios" className="text-base font-semibold text-foreground">
+                Comentarios adicionales
+              </Label>
+              <p className="text-sm text-muted-foreground">
+                Cualquier cosa que se les ocurra y nos ayude a entender mejor el sistema o el
+                contexto: dolores de cabeza actuales, algo que no preguntamos, prioridades, lo que
+                sea.
+              </p>
+              <Textarea
+                id="comentarios"
+                value={answers["comentarios"] || ""}
+                onChange={(e) => onChange("comentarios", e.target.value)}
+                onFocus={() => (focusedId.current = "comentarios")}
+                onBlur={() => {
+                  focusedId.current = null;
+                  if (Object.keys(dirty.current).length > 0) guardar();
+                }}
+                placeholder="Escriban acá lo que quieran sumar"
+                rows={5}
+                className="bg-muted/30 rounded-xl resize-y"
+              />
+            </div>
+            </>
           )}
 
           <div className="text-center mt-8">
