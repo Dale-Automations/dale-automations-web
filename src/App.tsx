@@ -10,6 +10,7 @@ import ScrollProgress from "@/components/ScrollProgress";
 import Index from "./pages/Index";
 import Cobros from "./pages/Cobros";
 import Patastay from "./pages/Patastay";
+import Cv from "./pages/Cv";
 import NotFound from "./pages/NotFound";
 
 
@@ -24,6 +25,7 @@ const App = () => (
         <Route path="/" element={<Index />} />
         <Route path="/cobros" element={<Cobros />} />
         <Route path="/patastay" element={<Patastay />} />
+        <Route path="/cv" element={<Cv />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>
