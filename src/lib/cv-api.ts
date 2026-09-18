@@ -222,5 +222,6 @@ export const pedirRearmado = (job_id: string) => postJson<OkRespuesta>(CV_ENDPOI
 export const enviarFeedback = (payload: FeedbackPayload) =>
   postJson<OkRespuesta>(CV_ENDPOINTS.feedback, payload);
 
-export const urlDeDescarga = (job_id: string) =>
-  `${CV_ENDPOINTS.download}?job_id=${encodeURIComponent(job_id)}`;
+// El PDF se sirve desde el propio sitio (proxy PHP en public/cv-pdf/index.php) para no exponer la URL de n8n.
+export const CV_DOWNLOAD_SITE = "https://daleautomations.com/cv-pdf/";
+export const urlDeDescarga = (job_id: string) => `${CV_DOWNLOAD_SITE}?id=${encodeURIComponent(job_id)}`;
