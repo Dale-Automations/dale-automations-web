@@ -1,8 +1,24 @@
 import { Mail, Phone, MapPin } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from "react-router-dom";
+import type { MouseEvent } from "react";
 
 const Footer = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Las secciones viven en el home: si estamos ahi, desplazamos; si no, navegamos a /#seccion
+  // (Index se encarga de bajar a la seccion al montar).
+  const irASeccion = (e: MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (location.pathname === "/" && el) {
+      el.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    navigate(`/#${id}`);
+  };
 
   return (
     <footer className="bg-brand-navy text-primary-foreground py-12 relative overflow-hidden">
@@ -45,13 +61,14 @@ const Footer = () => {
                 { id: 'about', label: t('header.aboutUs') },
                 { id: 'contact', label: t('header.contact') },
               ].map(item => (
-                <button
+                <a
                   key={item.id}
-                  onClick={() => document.getElementById(item.id)?.scrollIntoView({ behavior: 'smooth' })}
+                  href={`/#${item.id}`}
+                  onClick={(e) => irASeccion(e, item.id)}
                   className="block text-sm text-primary-foreground/60 hover:text-primary-foreground transition-colors duration-300"
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
             </div>
           </div>
