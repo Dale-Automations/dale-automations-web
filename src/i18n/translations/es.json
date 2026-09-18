@@ -7,7 +7,12 @@
   },
   "hero": {
     "titleFixed": "Automatizá y controlá tu negocio",
-    "titleRotating": ["desde un solo lugar", "desde la PC de tu oficina", "desde tu laptop", "desde tu celular"],
+    "titleRotating": [
+      "desde un solo lugar",
+      "desde la PC de tu oficina",
+      "desde tu laptop",
+      "desde tu celular"
+    ],
     "subtitle": "Diseñamos sistemas inteligentes con IA y dashboards en tiempo real para que tomes decisiones con datos, no con intuición.",
     "cta": "Agendá una llamada",
     "ctaSecondary": "Ver casos reales"
@@ -39,25 +44,57 @@
       "title": "FacturaInteligente",
       "tag": "SaaS en producción",
       "description": "Sistema completo de facturación electrónica AFIP con emisión automática, cobranzas programadas, bot de WhatsApp para facturar por chat y portal web con suscripciones vía Mercado Pago.",
-      "features": ["Emisión automática AFIP", "Bot WhatsApp para facturar", "Cobranzas automáticas", "Portal web + suscripciones"]
+      "features": [
+        "Emisión automática AFIP",
+        "Bot WhatsApp para facturar",
+        "Cobranzas automáticas",
+        "Portal web + suscripciones"
+      ]
     },
     "hch": {
       "title": "HCH Cargo Solutions",
       "tag": "Trucking USA",
       "description": "Sistema de gestión de flota para empresa de transporte en Estados Unidos: liquidaciones de viajes, compliance DOT, KPIs operativos, importación de rate cons y sincronización con Google Drive.",
-      "features": ["Liquidaciones automáticas", "Compliance DOT", "Dashboard de KPIs", "Importación de documentos"]
+      "features": [
+        "Liquidaciones automáticas",
+        "Compliance DOT",
+        "Dashboard de KPIs",
+        "Importación de documentos"
+      ]
     },
     "recruiting": {
       "title": "Agencia de Recruiting",
       "tag": "RRHH + IA",
       "description": "Dashboard de reclutamiento con scoring automático de CVs usando inteligencia artificial, pipeline de candidatos en tiempo real e integración directa con LinkedIn para captación de talento.",
-      "features": ["Scoring de CVs con IA", "Pipeline en tiempo real", "Integración con LinkedIn", "Dashboard de métricas"]
+      "features": [
+        "Scoring de CVs con IA",
+        "Pipeline en tiempo real",
+        "Integración con LinkedIn",
+        "Dashboard de métricas"
+      ]
     },
     "mymate": {
       "title": "MyMate Hub",
       "tag": "AgencyOS",
       "description": "Sistema operativo para agencia digital: gestión centralizada de clientes, sincronización automática de facturas entre sistemas y dashboard con visibilidad total de la operación.",
-      "features": ["Gestión de clientes", "Sync de facturas entre sistemas", "Dashboard centralizado", "Visibilidad total"]
+      "features": [
+        "Gestión de clientes",
+        "Sync de facturas entre sistemas",
+        "Dashboard centralizado",
+        "Visibilidad total"
+      ]
+    },
+    "cv": {
+      "title": "Analizador de CV con IA",
+      "tag": "Herramienta gratuita",
+      "description": "Herramienta pública de Dale: la persona sube su CV, una IA propia audita si está optimizado para los sistemas ATS y busca en LinkedIn los puestos donde más chances tiene, con la fecha de publicación de cada aviso.",
+      "features": [
+        "Auditoría ATS con IA",
+        "Puestos ordenados por afinidad",
+        "Filtro por fecha del aviso",
+        "CV optimizado en PDF"
+      ],
+      "cta": "Probala gratis"
     }
   },
   "aboutUs": {
