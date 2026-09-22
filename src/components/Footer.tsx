@@ -93,10 +93,16 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center">
-          <span className="text-primary-foreground/40 text-xs">
+        <div className="border-t border-primary-foreground/10 mt-10 pt-6 text-center space-y-2">
+          <span className="block text-primary-foreground/40 text-xs">
             {t('footer.copyright')}
           </span>
+          <a
+            href="/privacidad/"
+            className="inline-block text-primary-foreground/40 hover:text-primary-foreground/70 text-xs underline underline-offset-2 transition-colors duration-300"
+          >
+            {t('footer.privacy')}
+          </a>
         </div>
       </div>
     </footer>
