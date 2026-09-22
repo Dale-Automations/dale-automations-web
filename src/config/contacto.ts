@@ -25,3 +25,30 @@ export const abrirWhatsApp = (lang?: string, mensaje?: string): void => {
     '_blank'
   );
 };
+
+// Guarda el lead antes de abrir WhatsApp.
+// Sin esto, si la persona no llega a mandar el mensaje (se arrepiente, no tiene
+// WhatsApp Web, cierra la pestaña), el contacto se pierde y nadie se entera.
+const WEBHOOK_LEAD = 'https://n8n.daleautomations.com/webhook/lead-sitio';
+
+export const registrarLead = (datos: {
+  nombre: string;
+  telefono: string;
+  idioma?: string;
+  origen?: string;
+}): void => {
+  try {
+    fetch(WEBHOOK_LEAD, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...datos,
+        utm: window.location.search.slice(0, 200),
+      }),
+      // el envío sobrevive aunque el navegador abra WhatsApp en el acto
+      keepalive: true,
+    }).catch(() => {});
+  } catch {
+    // registrar el lead nunca puede impedir que la persona nos escriba
+  }
+};

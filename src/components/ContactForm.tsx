@@ -4,7 +4,7 @@ import { MessageCircle, Send, ArrowRight } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 import { useInView } from "@/hooks/use-in-view";
-import { abrirWhatsApp } from "@/config/contacto";
+import { abrirWhatsApp, registrarLead } from "@/config/contacto";
 
 // Un teléfono real tiene entre 8 y 15 dígitos (el máximo del estándar E.164).
 const MIN_DIGITOS = 8;
@@ -48,6 +48,16 @@ const ContactForm = () => {
     }
 
     setError('');
+
+    // Primero se guarda el lead, después se abre WhatsApp. Si la persona no llega
+    // a mandar el mensaje, el contacto igual nos queda.
+    registrarLead({
+      nombre: name.trim(),
+      telefono: whatsapp.trim(),
+      idioma: i18n.language,
+      origen: 'formulario',
+    });
+
     const msg = i18n.language === 'en'
       ? `Hey Pablo! I'm ${name.trim()} (${whatsapp.trim()}). Found you on daleautomations.com`
       : `Hola! Soy ${name.trim()} (${whatsapp.trim()}). Los encontré por daleautomations.com`;
