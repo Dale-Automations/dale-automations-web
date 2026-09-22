@@ -1,17 +1,12 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import { abrirWhatsApp } from '@/config/contacto';
 
 const FloatingChatButton = () => {
   const { t, i18n } = useTranslation();
 
-  const handleWhatsAppClick = () => {
-    const phone = i18n.language === 'en' ? '13464929025' : '5491136626658';
-    const msg = i18n.language === 'en'
-      ? "Hey Pablo! I found you on daleautomations.com"
-      : "Hola Pablo! Los encontré por daleautomations.com";
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-  };
+  const handleWhatsAppClick = () => abrirWhatsApp(i18n.language);
 
   return (
     <div className="fixed bottom-6 right-6 z-50">
