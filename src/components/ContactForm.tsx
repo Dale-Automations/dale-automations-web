@@ -4,30 +4,54 @@ import { MessageCircle, Send, ArrowRight } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useState } from "react";
 import { useInView } from "@/hooks/use-in-view";
+import { abrirWhatsApp } from "@/config/contacto";
+
+// Un teléfono real tiene entre 8 y 15 dígitos (el máximo del estándar E.164).
+const MIN_DIGITOS = 8;
+const MAX_DIGITOS = 15;
+const soloDigitos = (v: string) => v.replace(/\D/g, '');
 
 const ContactForm = () => {
   const { t, i18n } = useTranslation();
   const [name, setName] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
+  const [error, setError] = useState('');
   const { ref, isInView } = useInView();
 
-  const handleWhatsApp = () => {
-    const phone = i18n.language === 'en' ? '13464929025' : '5491136626658';
-    const msg = i18n.language === 'en'
-      ? "Hey Pablo! I found you on daleautomations.com"
-      : "Hola Pablo! Los encontré por daleautomations.com";
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+  const handleWhatsApp = () => abrirWhatsApp(i18n.language);
+
+  // Mientras escribe: deja pasar solo lo que puede haber en un teléfono.
+  // Las letras y los símbolos raros ni siquiera llegan a aparecer en el campo.
+  const handleWhatsappChange = (valor: string) => {
+    let limpio = valor.replace(/[^\d+\s().-]/g, '').slice(0, 20);
+    // Corta al llegar al máximo de dígitos reales, sin contar espacios ni guiones,
+    // así el campo no acepta un número imposible ni siquiera pegándolo.
+    while (soloDigitos(limpio).length > MAX_DIGITOS) {
+      limpio = limpio.slice(0, -1);
+    }
+    setWhatsapp(limpio);
+    if (error) setError('');
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || !whatsapp) return;
 
-    const phone = i18n.language === 'en' ? '13464929025' : '5491136626658';
+    if (!name.trim()) {
+      setError(t('contact.form.errorName'));
+      return;
+    }
+
+    const digitos = soloDigitos(whatsapp);
+    if (digitos.length < MIN_DIGITOS || digitos.length > MAX_DIGITOS) {
+      setError(t('contact.form.errorPhone'));
+      return;
+    }
+
+    setError('');
     const msg = i18n.language === 'en'
-      ? `Hey Pablo! I'm ${name} (${whatsapp}). Found you on daleautomations.com`
-      : `Hola Pablo! Soy ${name} (${whatsapp}). Los encontré por daleautomations.com`;
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
+      ? `Hey Pablo! I'm ${name.trim()} (${whatsapp.trim()}). Found you on daleautomations.com`
+      : `Hola! Soy ${name.trim()} (${whatsapp.trim()}). Los encontré por daleautomations.com`;
+    abrirWhatsApp(i18n.language, msg);
     setName('');
     setWhatsapp('');
   };
@@ -72,19 +96,30 @@ const ContactForm = () => {
               <Input
                 type="text"
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => { setName(e.target.value.slice(0, 60)); if (error) setError(''); }}
                 placeholder={t('contact.form.name')}
+                maxLength={60}
+                autoComplete="name"
                 className="border-brand-blue/20 focus:border-brand-blue focus:ring-brand-blue/20 py-6 text-base rounded-xl bg-muted/30"
                 required
               />
               <Input
                 type="tel"
+                inputMode="tel"
                 value={whatsapp}
-                onChange={(e) => setWhatsapp(e.target.value)}
+                onChange={(e) => handleWhatsappChange(e.target.value)}
                 placeholder={t('contact.form.whatsapp')}
+                maxLength={20}
+                autoComplete="tel"
+                aria-invalid={error ? true : undefined}
                 className="border-brand-blue/20 focus:border-brand-blue focus:ring-brand-blue/20 py-6 text-base rounded-xl bg-muted/30"
                 required
               />
+              {error && (
+                <p role="alert" className="text-sm text-red-600 px-1">
+                  {error}
+                </p>
+              )}
               <Button
                 type="submit"
                 size="lg"

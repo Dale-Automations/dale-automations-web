@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { useEffect, useRef, useState } from "react";
 import { useMousePosition } from "@/hooks/use-mouse-position";
 import DashboardMockup from "./DashboardMockup";
+import { abrirWhatsApp } from "@/config/contacto";
 
 function useRotatingText(words: string[], interval: number = 3000) {
   const [index, setIndex] = useState(0);
@@ -40,13 +41,7 @@ const Hero = () => {
     mockupRef.current.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   }, [mouse.nx, mouse.ny]);
 
-  const handleWhatsApp = () => {
-    const phone = i18n.language === 'en' ? '13464929025' : '5491136626658';
-    const msg = i18n.language === 'en'
-      ? "Hey Pablo! I found you on daleautomations.com"
-      : "Hola Pablo! Los encontré por daleautomations.com";
-    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
-  };
+  const handleWhatsApp = () => abrirWhatsApp(i18n.language);
 
   return (
     <section className="relative overflow-hidden">

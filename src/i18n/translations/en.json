@@ -132,6 +132,8 @@
     "form": {
       "name": "Your name",
       "whatsapp": "Your WhatsApp",
+      "errorName": "Please enter your name.",
+      "errorPhone": "Check the number: it must be between 8 and 15 digits.",
       "send": "Send",
       "sending": "Sending..."
     }

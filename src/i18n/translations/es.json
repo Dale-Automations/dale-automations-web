@@ -132,6 +132,8 @@
     "form": {
       "name": "Tu nombre",
       "whatsapp": "Tu WhatsApp",
+      "errorName": "Escribí tu nombre.",
+      "errorPhone": "Revisá el número: tiene que tener entre 8 y 15 dígitos.",
       "send": "Enviar",
       "sending": "Enviando..."
     }
@@ -141,7 +143,7 @@
     "legalInfo": "Dale Automations es una marca registrada de PH Bookkeeping LLC, empresa legalmente constituida en Texas, EE.UU.",
     "quickLinks": "Enlaces Rápidos",
     "contactInfo": "Contacto",
-    "phone": "+54 11 3662-6658 (WhatsApp)",
+    "phone": "+54 11 6232-5568 (WhatsApp)",
     "copyright": "© 2025 Dale Automations (PH Bookkeeping LLC). Todos los derechos reservados.",
     "poweredBy": "Buenos Aires, Argentina · Houston, TX"
   },
